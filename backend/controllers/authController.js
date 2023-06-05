@@ -2,6 +2,7 @@ const Admin = require('../models/admin');
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError= require('../middleware/catchAsyncError');
 const sendToken = require('../utils/jwtToken');
+const Counselor = require('../models/counselor');
 exports.registerAdmin = catchAsyncError(async (req, res, next)=>{
     const {name, email, password} = req.body;
 
@@ -85,3 +86,29 @@ exports.updatePassword = catchAsyncError(async(req,res,next)=>{
 
 
 });
+exports.getPendingCounselor= catchAsyncError(async(req,res,next)=>{
+
+    const counselors = await Counselor.find({approved:false});
+    res.status(200).json({
+        success:true,
+        counselors
+    });
+
+    
+})
+
+exports.acceptCounselorRequest= catchAsyncError(async(req,res,next)=>{
+
+    const id=req.body.id;
+    var mongoose = require('mongoose');
+    var o_id =new mongoose.Types.ObjectId(id);
+   const counselor =await Counselor.findByIdAndUpdate({_id: o_id});
+   counselor.approved=true;
+   await counselor.save();
+    res.status(200).json({
+        success:true,
+        counselor
+    });
+
+    
+})

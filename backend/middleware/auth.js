@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const AdminController = require("../models/admin");
 const UserController = require("../models/user");
 const ErrorHandler = require("../utils/errorHandler");
+const Counselor = require("../models/counselor");
 // Checks if user is authenticated or not.
 exports.isAuthenticated = catchAsyncError(async (req,res,next)=>{
     const  { token } =req.cookies;
@@ -22,7 +23,16 @@ exports.isAuthenticatedUser = catchAsyncError(async (req,res,next)=>{
     const decoded = jwt.verify(tokenUser,process.env.JWT_SECRET);
     
     req.user = await UserController.findById(decoded.id);
-    console.log(req.user+"aa");
+    next();
+})
+exports.isAuthenticatedCounselor = catchAsyncError(async (req,res,next)=>{
+    const  { counselorToken } =req.cookies;
+    if(!counselorToken){
+        return next(new ErrorHandler('Login first to access this resource.'));
+    }
+    const decoded = jwt.verify(counselorToken,process.env.JWT_SECRET);
+    
+    req.counselor = await Counselor.findById(decoded.id);
     next();
 })
 
