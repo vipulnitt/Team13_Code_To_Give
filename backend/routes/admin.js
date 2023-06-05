@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const { registerAdmin, loginAdmin,logoutAdmin, getAdminProfile, updatePassword, addNotification, getNotification, downloadNotification}  = require('../controllers/authController');
+const { registerAdmin, loginAdmin,logoutAdmin, getAdminProfile, updatePassword}  = require('../controllers/authController');
 const {login} = require('../controllers/userController');
 const { isAuthenticated } = require('../middleware/auth');
 
