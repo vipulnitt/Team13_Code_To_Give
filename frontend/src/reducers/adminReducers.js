@@ -24,6 +24,9 @@ import {
     NEW_PASSWORD_REQUEST,
     NEW_PASSWORD_SUCCESS,
     NEW_PASSWORD_FAIL,
+    PENDING_REQUEST,
+    PENDING_SUCCESS,
+    PENDING_FAIL,
     CLEAR_ERRORS
 } from '../constants/adminConstant';
 
@@ -160,3 +163,31 @@ export const forgotPasswordReducer =(state={},action)=>{
 }
 
 
+export const CounselorReducer = (state ={counselors:{}},action)=>{
+        switch(action.type){
+            case PENDING_REQUEST:
+                return{
+                    ...state,
+                    loading:true
+               }
+            case PENDING_SUCCESS:
+                return {
+                    ...state,
+                    loading:false,
+                    counselors: action.payload
+                }
+            case PENDING_FAIL:
+                return{
+                    ...state,
+                    loading:false,
+                    error:action.payload
+                }
+                case CLEAR_ERRORS:
+                    return {
+                        ...state,
+                        error:null
+                    }
+           default:
+            return state;
+        }
+}

@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/adminAction";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import PendingRequest from "./components/Admin/PendingRequest";
 
 const App = () => {
   const {isAuthenticated,loading,user} = useSelector(state=> state.auth);
@@ -48,7 +49,11 @@ const App = () => {
         <Admin/>
       </ProtectedRoute>
     } exact/>
-
+        <Route path='/admin/pendingrequest' element={
+      <ProtectedRoute isLoggedIn={isAuthenticated}>
+        <PendingRequest/>
+      </ProtectedRoute>
+    } exact/>
     </Routes>
     </Router>
 
