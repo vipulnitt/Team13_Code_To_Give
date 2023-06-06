@@ -23,6 +23,9 @@ import {
     NEW_PASSWORD_REQUEST,
     NEW_PASSWORD_SUCCESS,
     NEW_PASSWORD_FAIL,
+    PENDING_REQUEST,
+    PENDING_SUCCESS,
+    PENDING_FAIL,
     CLEAR_ERRORS
 } from '../constants/adminConstant';
 
@@ -216,4 +219,52 @@ export const  resetPassword = (token,passwords)=> async(dispatch)=>{
         })
     }
     
+}
+
+export const pendingRequest =()=>async(dispatch)=>{
+    try{
+        dispatch({
+            type: PENDING_REQUEST
+        })
+        
+        const {data} = await axios.get('/api/v1/getpendingcounselor');
+        dispatch({
+            type:PENDING_SUCCESS,
+            payload: data.counselors
+            
+        })
+    
+        } catch(error){
+            dispatch({
+                type:PENDING_FAIL,
+                payload: error.response.data.message
+            })
+        }
+}
+
+export const AcceptRequest =(id)=>async(dispatch)=>{
+    try{
+        dispatch({
+            type: PENDING_REQUEST
+        })
+        const config = {
+            headers:{
+                'content-type': 'application/json'
+            }
+        }
+        
+        const {d} = await axios.put('/api/v1/acceptCounselorRequest',id,config);
+        const {data} = await axios.get('/api/v1/getpendingcounselor');
+        dispatch({
+            type:PENDING_SUCCESS,
+            payload: data.counselors
+            
+        })
+    
+        } catch(error){
+            dispatch({
+                type:PENDING_FAIL,
+                payload: error.response.data.message
+            })
+        }
 }
