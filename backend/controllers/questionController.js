@@ -2,36 +2,26 @@ const express = require("express");
 const Questions = require("../models/questionModel");
 
 const createQuestion = async (req, res) => {
+  const { questionId, statement, options, parentId } = req.body;
+  if (!questionId || !statement || !options || !parentId) {
+    return res.status(400).json({ error: "Please filled the field properly" });
+  }
   try {
-    const q = await Questions.create({
-      questionId: "1",
-      statement: "How much time do you spend on your phone each day?",
-      options: [
-        {
-          option: "Lees than 1 hours",
-        },
-        {
-          option: "1 - 2 hours",
-        },
-        {
-          option: "2 - 4 hours",
-          childId: "2",
-        },
-        {
-          option: "More than 4 hours",
-          childId: "2",
-        },
-      ],
-      parentId: "0",
+    const newQuestion = await Questions.create({
+      questionId,
+      statement,
+      options,
+      parentId,
     });
-
-    if (!q) {
-      res.status(404).json({ message: "Question not inserted" });
+    if (newQuestion) {
+      return res
+        .status(201)
+        .json({ message: "Question inserted successfully" });
     } else {
-      res.send(q);
+      return res.status(400).json({ error: "Question not inserted" });
     }
-  } catch (err) {
-    res.status(500).json({ message: `${err}` });
+  } catch (error) {
+    return res.status(500).json({ error: `${error}` });
   }
 };
 
@@ -39,12 +29,12 @@ const questions = async (req, res) => {
   try {
     const q = await Questions.find();
     if (!q) {
-      res.status(404).json({ message: "No questions found" });
+      return res.status(404).json({ error: "No questions found" });
     } else {
       res.send(q);
     }
-  } catch (err) {
-    res.status(500).json({ message: `${err}` });
+  } catch (error) {
+    return res.status(500).json({ error: `${error}` });
   }
 };
 
