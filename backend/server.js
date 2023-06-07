@@ -1,6 +1,8 @@
 const app = require('./app');
 const connectDatabase = require('./config/database');
 const dotenv = require('dotenv');
+const TelegramBot = require('./config/telegramBot');
+
 //handle the uncaught exceptions
 
 process.on('uncaughtException',err=>{
@@ -9,13 +11,11 @@ process.on('uncaughtException',err=>{
     process.exit(1); 
 });
 
-//setting config file
 dotenv.config({path:'backend/config/config.env'});
 
-//connecting database
+
+
 connectDatabase();
-
-
 
 
 const server=app.listen(process.env.PORT,()=>{
@@ -32,3 +32,5 @@ process.on('unhandledRejection',err=>{
         process.exit(1)
     })
 })
+
+

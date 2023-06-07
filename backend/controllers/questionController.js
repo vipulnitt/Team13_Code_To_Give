@@ -1,41 +1,33 @@
 const express = require("express");
 const Questions = require("../models/questionModel");
+const ErrorHandler = require('../utils/errorHandler');
+const catchAsyncError= require('../middleware/catchAsyncError');
 
-const createQuestion = async (req, res) => {
+exports.createQuestion =  catchAsyncError(async (req, res, next)=>{
   const { questionId, statement, options, parentId } = req.body;
   if (!questionId || !statement || !options || !parentId) {
-    return res.status(400).json({ error: "Please filled the field properly" });
+    return next(new ErrorHandler('Please filled the field properly"',400))
+
   }
-  try {
     const newQuestion = await Questions.create({
       questionId,
       statement,
       options,
       parentId,
     });
-    if (newQuestion) {
-      return res
-        .status(201)
-        .json({ message: "Question inserted successfully" });
-    } else {
-      return res.status(400).json({ error: "Question not inserted" });
-    }
-  } catch (error) {
-    return res.status(500).json({ error: `${error}` });
-  }
-};
+    res.status(200).json({
+      success:true,
+      newQuestion
+  });
 
-const questions = async (req, res) => {
-  try {
-    const q = await Questions.find();
-    if (!q) {
-      return res.status(404).json({ error: "No questions found" });
-    } else {
-      res.send(q);
-    }
-  } catch (error) {
-    return res.status(500).json({ error: `${error}` });
-  }
-};
+});
 
-module.exports = { createQuestion, questions };
+exports.fetchQuestion = catchAsyncError(async (req, res, next)=>{
+  const { id } = req.body;
+  const question = await Questions.findOne({questionId:id});
+  res.status(200).json({
+    success:true,
+    question
+});
+ 
+});

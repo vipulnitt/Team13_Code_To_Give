@@ -3,7 +3,7 @@ const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError= require('../middleware/catchAsyncError');
 const sendToken = require('../utils/jwtTokenCounselor');
 exports.registerConselor = catchAsyncError(async (req, res, next)=>{
-    const {name, email, password,expertise,mobileNumber} = req.body;
+    const {name, email, password,expertise,experience,mobileNumber} = req.body;
      const approved=false;
   const counselor= await Counselor.create({
         name,
@@ -11,6 +11,7 @@ exports.registerConselor = catchAsyncError(async (req, res, next)=>{
         password,
         expertise,
         mobileNumber,
+        experience,
         approved
     })
    sendToken(counselor, 200,res);

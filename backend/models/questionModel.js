@@ -13,15 +13,19 @@ const questionSchema = new mongoose.Schema({
   options: [
     {
       option: {
-        type: String,
-        required: true,
+        type: String
       },
       childId: {
         type: String,
-        default: "-1",
+        default: "BASE0",
       },
     },
   ],
+  isText:{
+    childId:{
+      type:String
+    }
+  },
   parentId: {
     type: String,
     required: true,

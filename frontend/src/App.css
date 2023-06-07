@@ -398,7 +398,9 @@ footer {
   font-size: 0.9rem;
   color: grey;
 }
-
+.form-group{
+    margin-bottom: 1px;
+}
 /* Avatar */
 .avatar {
   display: inline-block;

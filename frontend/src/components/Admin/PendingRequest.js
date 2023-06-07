@@ -110,6 +110,14 @@ const PendingRequest = () => {
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
                             <div className="linkcorner">
+                            <b>Experience:</b> {currentCounselor&&currentCounselor.experience} years
+                            </div>
+                        </div>
+                        </div>
+                        <div className="card mb-0">
+                        <div className="card-header card-header-inner" data-toggle="collapse"
+                            data-parent="#accordion" href="#applicant_login">
+                            <div className="linkcorner">
                             <b>Mobile Number:</b> {currentCounselor&&currentCounselor.mobileNumber}
                             </div>
                         </div>

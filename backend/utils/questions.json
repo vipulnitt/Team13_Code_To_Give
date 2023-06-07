@@ -1,0 +1,218 @@
+[
+    {
+        "questionId":"BASE0",
+        "statement":"What is your Age?",
+         "isText":{
+            "childId":"BASE1"
+         },
+        "parentId":"BASE0"
+    },
+    {
+        "questionId":"BASE1",
+        "statement":"What is your gender?",
+        "options":[{"option":"Male","childId":"BASE2"},{"option":"Female","childId":"BASE2"}],
+        "parentId":"BASE0"
+    },
+    {
+        "questionId":"BASE2",
+        "statement":"What is your type of Addiction?",
+        "options":[{"option":"Drug","childId":"DRU1"},{"option":"Smoking","childId":"SMO1"},{"option":"Porn","childId":"PORN1"}],
+        "parentId":"BASE0"
+    },
+
+  {
+    "questionId": "PORN1",
+    "statement": "Do you find yourself spending excessive amounts of time watching pornography?",
+    "options": [
+      {
+        "option": "Yes",
+        "childId": "PORN2"
+      },
+      {
+        "option": "No",
+        "childId": "PORN4"
+      }
+    ],
+    "parentId": "BASE0"
+  },
+  {
+    "questionId": "PORN2",
+    "statement": "Do you find it difficult to control or stop watching pornography?",
+    "options": [
+      {
+        "option": "Yes",
+        "childId": "PORN3"
+      },
+      {
+        "option": "No",
+        "childId": "PORN4"
+      }
+    ],
+    "parentId": "PORN1"
+  },
+  {
+    "questionId": "PORN3",
+    "statement": "Have you experienced negative consequences in your personal or professional life due to your pornography consumption?",
+    "options": [
+      {
+        "option": "Yes",
+        "childId": "Counseling"
+      },
+      {
+        "option": "No",
+        "childId": "NoCounseling"
+      }
+    ],
+    "parentId": "PORN2"
+  },
+  {
+    "questionId": "PORN4",
+    "statement": "Have you tried to cut down or stop watching pornography but failed?",
+    "options": [
+      {
+        "option": "Yes",
+        "childId": "PORN5"
+      },
+      {
+        "option": "No",
+        "childId": "PORN7"
+      }
+    ],
+    "parentId": "PORN1"
+  },
+  {
+    "questionId": "PORN5",
+    "statement": "Do you feel distressed or anxious when you're unable to watch pornography?",
+    "options": [
+      {
+        "option": "Yes",
+        "childId": "PORN6"
+      },
+      {
+        "option": "No",
+        "childId": "PORN7"
+      }
+    ],
+    "parentId": "PORN4"
+  },
+  {
+    "questionId": "PORN6",
+    "statement": "Have you neglected your responsibilities or relationships due to pornography consumption?",
+    "options": [
+      {
+        "option": "Yes",
+        "childId": "Counseling"
+      },
+      {
+        "option": "No",
+        "childId": "NoCounseling"
+      }
+    ],
+    "parentId": "PORN5"
+  },
+  {
+    "questionId": "PORN7",
+    "statement": "Have you attempted to hide or lie about your pornography consumption?",
+    "options": [
+      {
+        "option": "Yes",
+        "childId": "PORN8"
+      },
+      {
+        "option": "No",
+        "childId": "PORN10"
+      }
+    ],
+    "parentId": "PORN4"
+  },
+  {
+    "questionId": "PORN8",
+    "statement": "Do you feel guilty or ashamed about your pornography consumption?",
+    "options": [
+      {
+        "option": "Yes",
+        "childId": "PORN9"
+      },
+      {
+        "option": "No",
+        "childId": "PORN10"
+      }
+    ],
+    "parentId": "PORN7"
+  },
+  {
+    "questionId": "PORN9",
+    "statement": "Have you tried unsuccessfully to quit or reduce your pornography consumption?",
+"options": [
+{
+"option": "Yes",
+"childId": "Counseling"
+},
+{
+"option": "No",
+"childId": "NoCounseling"
+}
+],
+"parentId": "PORN8"
+},
+{
+"questionId": "PORN10",
+"statement": "Do you feel a sense of loss of control over your pornography consumption?",
+"options": [
+{
+"option": "Yes",
+"childId": "Counseling"
+},
+{
+"option": "No",
+"childId": "NoCounseling"
+}
+],
+"parentId": "PORN7"
+},
+{
+"questionId": "PORN11",
+"statement": "Have you experienced difficulties in maintaining intimate relationships due to your pornography consumption?",
+"options": [
+{
+"option": "Yes",
+"childId": "Counseling"
+},
+{
+"option": "No",
+"childId": "NoCounseling"
+}
+],
+"parentId": "PORN10"
+},
+{
+"questionId": "PORN12",
+"statement": "Do you find yourself constantly thinking about pornography even when you don't want to?",
+"options": [
+{
+"option": "Yes",
+"childId": "PORN13"
+},
+{
+"option": "No",
+"childId": "NoCounseling"
+}
+],
+"parentId": "PORN11"
+},
+{
+"questionId": "PORN13",
+"statement": "Have you tried other activities to distract yourself from pornography but have been unsuccessful?",
+"options": [
+{
+"option": "Yes",
+"childId": "Counseling"
+},
+{
+"option": "No",
+"childId": "NoCounseling"
+}
+],
+"parentId": "PORN12"
+}
+]

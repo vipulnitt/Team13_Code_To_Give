@@ -12,6 +12,7 @@ import store from "./store";
 import { loadUser } from "./actions/adminAction";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PendingRequest from "./components/Admin/PendingRequest";
+import Register from "./components/Counselor/Register";
 
 const App = () => {
   const {isAuthenticated,loading,user} = useSelector(state=> state.auth);
@@ -43,6 +44,7 @@ const App = () => {
     <Header/>
     <Routes>
       <Route path='/' Component={Home}/>
+  
       <Route path='/admin/login' Component={Login}/>
       <Route path='/admin' element={
       <ProtectedRoute isLoggedIn={isAuthenticated}>
@@ -54,6 +56,7 @@ const App = () => {
         <PendingRequest/>
       </ProtectedRoute>
     } exact/>
+     <Route path='/counselor/register' Component={Register}/>
     </Routes>
     </Router>
 
