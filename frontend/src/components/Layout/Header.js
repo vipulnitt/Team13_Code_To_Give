@@ -8,6 +8,7 @@ import { counselorLogout } from '../../actions/counselorAction';
 const Header = () => {
   const {admin,loading} =  useSelector(state=>state.auth);
   const {counselor} = useSelector(state=>state.Counselor);
+  const navigate= useNavigate();
   let location = useLocation();
   useEffect(()=>{},[location]);
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const Header = () => {
       showConfirmButton: false,
       timer: 1500,
     });
+    navigate('/');
     }
     const logoutCounselorHandler = ()=>{
       dispatch(counselorLogout());
@@ -32,7 +34,7 @@ const Header = () => {
         timer: 1500,
       });
       
-    
+      navigate('/');
     }
   return (
     <Fragment>

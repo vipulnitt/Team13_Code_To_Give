@@ -17,6 +17,9 @@ import {
     COUNSELOR_UPDATE_PASSWORD_SUCCESS,
     COUNSELOR_UPDATE_PASSWORD_FAIL,
     CLEAR_ERRORS,
+    COUNSELING_REQUEST,
+    COUNSELING_SUCCESS,
+    COUNSELING_FAIL,
   } from '../constants/counselorConstant';
   
   export const counselorAuthReducer = (state = { counselor: {} }, action) => {
@@ -91,6 +94,36 @@ import {
         }
       case COUNSELOR_UPDATE_PROFILE_FAIL:
       case COUNSELOR_UPDATE_PASSWORD_FAIL:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload
+        }
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          error: null
+        }
+      default:
+        return state;
+    }
+  }
+
+  export const counselingRequestReducer = (state = {requests:{}}, action) => {
+    switch (action.type) {
+      case COUNSELING_REQUEST:
+        return {
+          ...state,
+          loading: true
+        }
+     
+      case COUNSELING_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          requests: action.payload
+        }
+      case COUNSELING_FAIL:
         return {
           ...state,
           loading: false,

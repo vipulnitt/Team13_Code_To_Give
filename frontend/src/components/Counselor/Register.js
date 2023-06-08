@@ -125,7 +125,7 @@ const Register = () => {
                   <input
                     type="checkbox"
                     name="expertise"
-                    value="drug"
+                    value="Drug"
                     checked={formData.expertise.includes('drug')}
                     onChange={handleCheckboxChange}
                   />
@@ -134,7 +134,7 @@ const Register = () => {
                   <input
                     type="checkbox"
                     name="expertise"
-                    value="porn"
+                    value="Porn"
                     checked={formData.expertise.includes('porn')}
                     onChange={handleCheckboxChange}
                   />

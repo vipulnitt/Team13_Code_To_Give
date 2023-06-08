@@ -17,6 +17,9 @@ import {
   COUNSELOR_UPDATE_PASSWORD_REQUEST,
   COUNSELOR_UPDATE_PASSWORD_SUCCESS,
   COUNSELOR_UPDATE_PASSWORD_FAIL,
+  COUNSELING_REQUEST,
+  COUNSELING_SUCCESS,
+  COUNSELING_FAIL,
   CLEAR_ERRORS,
 } from '../constants/counselorConstant';
 
@@ -157,4 +160,21 @@ export const counselorLogin = (email, password) => async (dispatch) => {
     }
   };
 
- 
+ export const counselingRequests= () => async (dispatch) =>{
+  try {
+    dispatch({
+      type: COUNSELING_REQUEST,
+    });
+    const { data } = await axios.get('/api/v1/counselor/counselingrequest');
+    console.log("hello"+JSON.stringify(data));
+    dispatch({
+      type: COUNSELING_SUCCESS,
+      payload: data.response
+    });
+  } catch (error) {
+    dispatch({
+      type: COUNSELING_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+ }
