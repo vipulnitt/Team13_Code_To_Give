@@ -5,6 +5,7 @@ const sendToken = require('../utils/jwtTokenCounselor');
 exports.registerConselor = catchAsyncError(async (req, res, next)=>{
     const {name, email, password,expertise,experience,mobileNumber} = req.body;
      const approved=false;
+ //    console.log("x"+JSON.stringify(req.body));
   const counselor= await Counselor.create({
         name,
         email,

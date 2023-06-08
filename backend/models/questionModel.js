@@ -27,8 +27,7 @@ const questionSchema = new mongoose.Schema({
     }
   },
   parentId: {
-    type: String,
-    required: true,
+    type: String
   },
 });
 

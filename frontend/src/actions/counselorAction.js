@@ -17,8 +17,8 @@ import {
   COUNSELOR_UPDATE_PASSWORD_REQUEST,
   COUNSELOR_UPDATE_PASSWORD_SUCCESS,
   COUNSELOR_UPDATE_PASSWORD_FAIL,
-  COUNSELOR_CLEAR_ERRORS,
-} from '../constants/counselorConstants';
+  CLEAR_ERRORS,
+} from '../constants/counselorConstant';
 
 
 
@@ -50,9 +50,10 @@ export const counselorLogin = (email, password) => async (dispatch) => {
       dispatch({
         type: COUNSELOR_REG_REQUEST,
       });
+    //  console.log(JSON.stringify(userData));
       const config = {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'content-type': 'application/json'
         },
       };
       const { data } = await axios.post('/api/v1/counselor/register', userData, config);
@@ -100,9 +101,9 @@ export const counselorLogin = (email, password) => async (dispatch) => {
     }
   };
   
-  export const counselorClearErrors = () => async (dispatch) => {
+  export const clearErrors = () => async (dispatch) => {
     dispatch({
-      type: COUNSELOR_CLEAR_ERRORS,
+      type: CLEAR_ERRORS,
     });
   };
   
@@ -155,5 +156,5 @@ export const counselorLogin = (email, password) => async (dispatch) => {
       });
     }
   };
-  
+
  

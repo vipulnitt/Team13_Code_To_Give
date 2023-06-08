@@ -16,8 +16,8 @@
     {
         "questionId":"BASE2",
         "statement":"What is your type of Addiction?",
-        "options":[{"option":"Drug","childId":"DRU1"},{"option":"Smoking","childId":"SMO1"},{"option":"Porn","childId":"PORN1"}],
-        "parentId":"BASE0"
+        "options":[{"option":"Mobile","childId":"MOBO1"},{"option":"Smoking","childId":"SMO1"},{"option":"Porn","childId":"PORN1"}],
+        "parentId":"BASE1"
     },
 
   {
@@ -33,7 +33,7 @@
         "childId": "PORN4"
       }
     ],
-    "parentId": "BASE0"
+    "parentId": "BASE2"
   },
   {
     "questionId": "PORN2",
@@ -214,5 +214,511 @@
 }
 ],
 "parentId": "PORN12"
+},
+{
+  "questionId": "SMO1",
+  "statement": "How frequently do you smoke cigarettes?",
+  "parentId": null,
+  "options": [
+    {
+      "option": "Daily",
+      "childId": "SMO2"
+    },
+    {
+      "option": "Few times a week",
+      "childId": "SMO3"
+    },
+    {
+      "option": "Occasionally",
+      "childId": "NoCounseling"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO2",
+  "statement": "On average, how many cigarettes do you smoke per day?",
+  "parentId": "SMO1",
+  "options": [
+    {
+      "option": "10 or more",
+      "childId": "SMO4"
+    },
+    {
+      "option": "6-9",
+      "childId": "SMO5"
+    },
+    {
+      "option": "1-5",
+      "childId": "NoCounseling"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO3",
+  "statement": "What situations trigger your smoking habits?",
+  "parentId": "SMO1",
+  "options": [
+    {
+      "option": "Stress",
+      "childId": "SMO6"
+    },
+    {
+      "option": "Socializing",
+      "childId": "SMO7"
+    },
+    {
+      "option": "Boredom",
+      "childId": "SMO8"
+    },
+    {
+      "option": "Other",
+      "childId": "NoCounseling"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO4",
+  "statement": "Have you tried to quit smoking in the past? If yes, how successful were your attempts?",
+  "parentId": "SMO2",
+  "options": [
+    {
+      "option": "Yes, multiple times with little success",
+      "childId": "SMO9"
+    },
+    {
+      "option": "Yes, successfully quit for a period of time",
+      "childId": "SMO10"
+    },
+    {
+      "option": "No, I haven't tried to quit yet",
+      "childId": "NoCounseling"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO5",
+  "statement": "Do you experience withdrawal symptoms when you try to reduce or quit smoking? (Examples: irritability, anxiety, restlessness)",
+  "parentId": "SMO2",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "SMO9"
+    },
+    {
+      "option": "No",
+      "childId": "SMO10"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO6",
+  "statement": "Are you interested in finding healthier alternatives to manage stress instead of smoking?",
+  "parentId": "SMO3",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "Counseling"
+    },
+    {
+      "option": "No",
+      "childId": "SMO11"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO7",
+  "statement": "Do you often feel the need to smoke when you are in social situations?",
+  "parentId": "SMO3",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "Counseling"
+    },
+    {
+      "option": "No",
+      "childId": "SMO11"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO8",
+  "statement": "Do you find yourself smoking out of boredom or as a way to pass the time?",
+  "parentId": "SMO3",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "SMO12"
+    },
+    {
+      "option": "No",
+      "childId": "SMO11"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO9",
+  "statement": "Have you ever sought professional help or counseling to quit smoking?",
+  "parentId": "SMO4",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "Counseling"
+    },
+    {
+      "option": "No",
+      "childId": "SMO11"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO10",
+  "statement": "Are you motivated to quit smoking?",
+  "parentId": "SMO4",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "Counseling"
+    },
+    {
+      "option": "No",
+      "childId": "NoCounseling"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO11",
+  "statement": "Do you have any specific concerns or challenges related to smoking that you would like to address?",
+  "parentId": null,
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "Counseling"
+    },
+    {
+      "option": "No",
+      "childId": "NoCounseling"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO12",
+  "statement": "Have you tried any nicotine replacement therapies or smoking cessation aids in the past?",
+  "parentId": "SMO8",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "SMO13"
+    },
+    {
+      "option": "No",
+      "childId": "SMO14"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO13",
+  "statement": "Would you be open to exploring different nicotine replacement therapies or smoking cessation aids with professional guidance?",
+  "parentId": "SMO12",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "Counseling"
+    },
+    {
+      "option": "No",
+      "childId": "NoCounseling"
+    }
+  ]
+},
+
+{
+  "questionId": "SMO14",
+  "statement": "Are you interested in learning coping strategies to overcome smoking cravings and urges?",
+  "parentId": "SMO12",
+  "options": [
+    {
+      "option": "Yes",
+      "childId": "Counseling"
+    },
+    {
+      "option": "No",
+      "childId": "NoCounseling"
+    }
+  ]
+},
+{
+  "questionId": "MOBO1",
+  "statement": "How much time do you spend on your phone each day?",
+"parentId": "BASE2",
+  "options": [
+    {
+      "option": "Less than 1 hours",
+      "childId": "MOBO2"
+    },
+    {
+      "option": "1-2 hours",
+      "childId": "MOBO2"
+    },
+    {
+      "option": "2-4 hours",
+      "childId": "MOBO2"
+    },
+    {
+      "option": "More than 4 hours",
+      "childId": "MOBO2"
+    }
+  ]
+}, 
+{
+  "questionId": "MOBO2",
+  "statement": "Do you ever feel like you're addicted to your phone?",
+"parentId": "MOBO1",
+  "options": [
+    {
+      "option": "I'm not sure if I'm addicted to my phone, but I know I could use less of it",
+      "childId": "MOBO4"
+    },
+    {
+      "option": "I try not to use my phone too much, but it's hard",
+      "childId": "MOBO4"
+    },
+    {
+      "option": "I'm not sure if I'm addicted to my phone, but I do spend a lot of time on it",
+      "childId": "MOBO3"
+    },
+    {
+      "option": "Yes, I do sometimes feel like I'm addicted to my phone",
+      "childId": "MOBO3"
+    }
+  ]
+}, 
+{
+  "questionId": "MOBO3",
+  "statement": "Have you ever tried to cut back on your phone use, but found it difficult or impossible?",
+"parentId": "MOBO2",
+  "options": [
+    {
+      "option": "I know I need to cut back on my phone use, but I don't know how",
+      "childId": "MOBO6"
+    },
+    {
+      "option": "I've tried to set limits on my screen time, but I always end up going over",
+      "childId": "MOBO5"
+    },
+    {
+      "option": "I find it very difficult to put my phone down",
+      "childId": "MOBO4"
+    }
+  ]
+},
+{
+  "questionId": "MOBO4",
+  "statement": "Do you ever check your phone for notifications even when you know there aren't any?",
+"parentId": "MOBO3",
+  "options": [
+    {
+      "option": "Sometimes",
+      "childId": "MOBO7"
+    },
+    {
+      "option": "I'm a human, it's a habit",
+      "childId": "MOBO6"
+    },
+    {
+      "option": "All the time",
+      "childId": "MOBO5"
+    }
+  ]
+}, 
+{
+  "questionId": "MOBO5",
+  "statement": "Do you ever feel like you're missing out on something if you're not using your phone?",
+"parentId": "MOBO4",
+  "options": [
+    {
+      "option": "I feel like I'm not living my life to the fullest if I'm not constantly connected",
+      "childId": "MOBO8"
+    },
+    {
+      "option": "I'm afraid of missing out on important news or information",
+      "childId": "MOBO7"
+    },
+    {
+      "option": "I feel like I need to be constantly connected to know what's going on",
+      "childId": "MOBO6"
+    }
+  ]
+}, 
+{
+  "questionId": "MOBO6",
+  "statement": "Have your friends or family ever expressed concern about the amount of time you spend on your phone?",
+"parentId": "MOBO5",
+  "options": [
+    {
+      "option": "No, they haven't",
+      "childId": "NoCounseling"
+    },
+    {
+      "option": "I don't think they have",
+      "childId": "NoCounseling"
+    },
+    {
+      "option": "I don't know if they have",
+      "childId": "MOBO8"
+    },
+    {
+      "option": "Yes, they have",
+      "childId": "MOBO7"
+    }
+  ]
+}, 
+{
+  "questionId": "MOBO7",
+  "statement": "Do you ever feel anxious or restless when you don't have your phone with you?",
+"parentId": "MOBO5",
+  "options": [
+    {
+      "option": "Never",
+      "childId": "NoCounseling"
+    },
+    {
+      "option": "Rarely",
+      "childId": "NoCounseling"
+    },
+    {
+      "option": "Sometimes",
+      "childId": "MOBO8"
+    },
+    {
+      "option": "Always",
+      "childId": "MOBO8"
+    }
+  ]
+},  
+{
+  "questionId": "MOBO8",
+  "statement": "Have you noticed any negative impacts on your sleep patterns or quality due to phone use?",
+"parentId": "MOBO6",
+  "options": [
+    {
+      "option": "No",
+      "childId": "Counseling"
+    },
+    {
+      "option": "I wake up more often during the night",
+      "childId": "MOB10"
+    },
+    {
+      "option": "It makes it harder to fall asleep",
+      "childId": "MOBO9"
+    }
+  ]
+},  
+{
+  "questionId": "MOBO9",
+  "statement": "Have you ever engaged in risky behaviors due to excessive phone use?",
+"parentId": "MOBO7",
+  "options": [
+    {
+      "option": "No",
+      "childId": "Counseling"
+    },
+    {
+      "option": "Sometimes",
+      "childId": "MOB11"
+    },
+    {
+      "option": "Most of the time",
+      "childId": "MOB10"
+    }
+  ]
+},  
+{
+  "questionId": "MOB10",
+  "statement": "Have you ever experienced physical discomfort due to prolonged phone use, such as eye strain or neck pain?",
+"parentId": "MOBO8",
+  "options": [
+    {
+      "option": "No",
+      "childId": "Counseling"
+    },
+    {
+      "option": "Sometimes",
+      "childId": "MOB12"
+    },
+    {
+      "option": "Most of the time",
+      "childId": "MOB11"
+    }
+  ]
+},  
+{
+  "questionId": "MOB11",
+  "statement": "Do you ever use your phone to avoid social interactions?",
+"parentId": "MOBO9",
+  "options": [
+    {
+      "option": "I do this when I'm feeling overwhelmed or anxious, or when I just don't feel like talking",
+      "childId": "MOB13"
+    },
+    {
+      "option": "Yes, I sometimes use my phone to avoid social interactions",
+      "childId": "MOB12"
+    }
+  ]
+},  
+{
+  "questionId": "MOB12",
+  "statement": "Do you ever use your phone to cope with negative emotions, such as stress or anxiety?",
+"parentId": "null",
+  "options": [
+    {
+      "option": "No, I'm talking to a friend or relative",
+      "childId": "Counseling"
+    },
+    {
+      "option": "I used to watch funny videos on occasion",
+      "childId": "Counseling"
+    },
+    {
+      "option": "I used to spend my time playing games, watching videos, and scrolling through social media",
+      "childId": "Counseling"
+    }
+  ]
+},  
+{
+  "questionId": "MOB13",
+  "statement": "Do you ever feel like you need to use your phone more and more to get the same level of satisfaction?",
+"parentId": "null",
+  "options": [
+    {
+      "option": "Never",
+      "childId": "Counseling"
+    },
+    {
+      "option": "Rarely",
+      "childId": "Counseling"
+    },
+    {
+      "option": "Sometimes",
+      "childId": "Counseling"
+    },
+    {
+      "option": "Always",
+      "childId": "Counseling"
+    }
+  ]
 }
 ]

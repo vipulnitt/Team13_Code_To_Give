@@ -3,6 +3,7 @@ import MetaData from './MetaData'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors } from '../../actions/adminAction';
+import LoginCorner from './LoginCorner';
 
 
 
@@ -15,9 +16,14 @@ const Home = () => {
   }
   const dispatch = useDispatch();
   const {isAuthenticated,error, loading}= useSelector(state=>state.auth);
+  const {isAuthenticatedCounselor}= useSelector(state=>state.Counselor);
   useEffect(()=>{
       if(isAuthenticated) {
         navigate('/admin');
+      }
+      if(isAuthenticatedCounselor)
+      {
+        navigate('/counselor');
       }
       if(error){
         
@@ -35,7 +41,7 @@ const Home = () => {
       
     
       <div className="container d-flex justify-content-center mt-5">
-    <button type="button" className="btn btn-primary " onClick={submitHandler}>Admin Login</button>
+    <LoginCorner></LoginCorner>
   </div>
   
   <br/>

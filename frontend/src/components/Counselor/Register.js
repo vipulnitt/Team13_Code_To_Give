@@ -1,4 +1,7 @@
 import React, { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { counselorRegister } from '../../actions/counselorAction';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -7,13 +10,14 @@ const Register = () => {
     password: '',
     mobileNumber: '',
     expertise: [],
+    experience: '',
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: name === 'experience' ? parseInt(value) : value,
     }));
   };
 
@@ -33,17 +37,18 @@ const Register = () => {
       }
     });
   };
-
+ const dispatch= useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     const jsonFormat = JSON.stringify(formData);
     console.log(jsonFormat);
-    // You can send the jsonFormat to your backend or perform any desired action.
+    dispatch(counselorRegister(formData));
+    
   };
 
   return (
     <Fragment>
-      <div className="container container-fluid">
+        <div className="container container-fluid">
         <div className="row wrapper">
           <div className="col-10 col-lg-5">
             <form className="shadow-lg" onSubmit={handleSubmit}>
@@ -101,9 +106,31 @@ const Register = () => {
                 </label>
               </div>
               <div className="form-group">
+                <label htmlFor="experience">
+                  Experience (year):
+                  <input
+                    type="text"
+                    name="experience"
+                    id="experience"
+                    className="form-control"
+                    value={formData.experience}
+                    onChange={handleChange}
+                  />
+                </label>
+              </div>
+              <div className="form-group">
                 <label>
                   Expertise:
                   <br />
+                  <input
+                    type="checkbox"
+                    name="expertise"
+                    value="drug"
+                    checked={formData.expertise.includes('drug')}
+                    onChange={handleCheckboxChange}
+                  />
+                  Drug
+                  <br/>
                   <input
                     type="checkbox"
                     name="expertise"
@@ -111,40 +138,21 @@ const Register = () => {
                     checked={formData.expertise.includes('porn')}
                     onChange={handleCheckboxChange}
                   />
-                  Porn<br/>
-                  <input
-                    type="checkbox"
-                    name="expertise"
-                    value="porn"
-                    checked={formData.expertise.includes('porn')}
-                    onChange={handleCheckboxChange}
-                  />Drug <br/>
-                   <input
-                    type="checkbox"
-                    name="expertise"
-                    value="porn"
-                    checked={formData.expertise.includes('porn')}
-                    onChange={handleCheckboxChange}
-                  />Social Media
-
+                  Porn
                 </label>
               </div>
+        
+              <Link to="/counselor/login" className="float-right mb-4">Login?</Link>
               <button className="btn btn-block py-3" type="submit">
                 Submit
               </button>
             </form>
-          </div>
-        </div>
-      </div>
-      <style>
-        {`
-        .form-group {
-          margin-bottom: 1px;
-        }
-        `}
-      </style>
-    </Fragment>
-  );
+</div>
+</div>
+</div>
+
+</Fragment>
+);
 };
 
 export default Register;
