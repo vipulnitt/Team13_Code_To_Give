@@ -42,12 +42,15 @@ const Header = () => {
       <div>
         <nav className="navbar navbar-expand-lg bg-dark navbar-dark my-0">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/"><img src="images/logo.png"  alt="DREAM" style={{ width:"20%"}}/></Link>
+                <Link className="navbar-brand" to="/"><img src="images/logo.png" alt="abc" style={{ width:"20%"}}/></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav " style={{marginLeft:"10%"}}>
+                <li className="nav-item">
+                        <Link className={`nav-link ${location.pathname==="/"?"active":""}`} aria-current="page" to="/"><strong style={{fontSize:"1.1rem"}}>Home</strong> </Link>
+                    </li>
                     <li className="nav-item">
                         <Link className={`nav-link ${location.pathname==="/articles"?"active":""}`} aria-current="page" to="/articles"><strong style={{fontSize:"1.1rem"}}>Articles</strong> </Link>
                     </li>
@@ -57,6 +60,11 @@ const Header = () => {
                     <li className="nav-item">
                         <Link className={`nav-link ${location.pathname==="/about"?"active":""}`} aria-current="page" to="/about"><strong style={{fontSize:"1.1rem"}}>About</strong> </Link>
                     </li>
+                    {!admin&&!counselor?( <li className="nav-item">
+                        <Link className={`nav-link ${location.pathname==="/login"?"active":""}`} aria-current="page" to="/login"><strong style={{fontSize:"1.1rem"}}>Login</strong> </Link>
+                    </li>):(<></>)}
+
+                   
                     <li className="nav-item bg-dark">
                     <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
       {admin? (
@@ -66,7 +74,7 @@ const Header = () => {
                         aria-haspopup="true"  aria-expanded="false">
                           <figure className='avatar avatar-nav'>
                             <img src ="images/avatar.png"
-                            alt={admin&admin.name}
+                            alt="abc"
                             className='rounded-circle'/>
                           </figure>
                           <span>{admin?admin.name:''}</span>
@@ -87,14 +95,14 @@ const Header = () => {
                         aria-haspopup="true"  aria-expanded="false">
                           <figure className='avatar avatar-nav'>
                             <img src ="images/avatar.png"
-                            alt={counselor&counselor.name}
+                            alt="abc"
                             className='rounded-circle'/>
                           </figure>
                           <span>{counselor?counselor.name:''}</span>
                           </Link>
                       
                           <div className="dropdown-content " aria-labelledby="dropDownMenuButton">
-                          <Link  to='/profile'>Profile</Link>
+                          <Link  to='/counselor/underprocess'>Under Process</Link>
                             <Link  to='/' onClick={logoutCounselorHandler}>Logout</Link>
                             </div>
 

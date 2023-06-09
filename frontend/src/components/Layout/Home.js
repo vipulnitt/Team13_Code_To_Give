@@ -9,11 +9,7 @@ import LoginCorner from './LoginCorner';
 
 const Home = () => {
   const navigate = useNavigate();
-  
-  const submitHandler = () =>
-  {
-    navigate('/admin/login');
-  }
+
   const dispatch = useDispatch();
   const {isAuthenticated,error, loading}= useSelector(state=>state.auth);
   const {isAuthenticatedCounselor}= useSelector(state=>state.Counselor);
@@ -38,13 +34,8 @@ const Home = () => {
       
       <MetaData title={'Team13_Code_To_Give'}/>
     
-      
-    
-      <div className="container d-flex justify-content-center mt-5">
-    <LoginCorner></LoginCorner>
-  </div>
-  
   <br/>
+  <button className='ml-5' onClick={()=>navigate('/user')}>Need Help?</button>
   <hr/>
     </Fragment>
 

@@ -1,36 +1,43 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { acceptRequests, counselingRequests } from '../../actions/counselorAction';
+import { acceptRequests, completed, underProcess } from '../../actions/counselorAction';
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../../Loader';
 import Swal from 'sweetalert2';
-const Counselor = () => {
-  const {counselor} = useSelector(state=>state.Counselor);
+const UnderProcess = () => {
+const {counselor} = useSelector(state=>state.Counselor);
 const { requests,loading} = useSelector(state=>state.counselingRequest);
 const [currentSelect,setCurrentSelect] = useState(null); 
 const [currentPage,setCurrentPage] = useState(0); 
-const navigate= useNavigate();
+const [remark,setRemark] = useState(''); 
+const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(()=>{
-  dispatch(counselingRequests());
+  dispatch(underProcess());
   },[dispatch]);
-  const handleAccept=()=>{
-        dispatch(acceptRequests(currentSelect._id));
-
+  const handleSubmit=(e)=>{
+        e.preventDefault();
+     
         Swal.fire({
             icon: 'success',
-            title: 'Counselor',
-            text: "Accepted!",
+            title: 'Counseling',
+            text: "Completed!",
             showConfirmButton: false,
             timer: 2000,
           });
+          const data ={
+            "id":currentSelect._id,
+            "remark":remark
+          }
+          dispatch(completed(data));
           setCurrentSelect(null);
+          setRemark('');
+       
   }
   if(currentPage==="1")
   {
     return(<Fragment >
      <div>
-       
      <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100">
   <div className="card bg-primary">
                     <div className="card-header cardHead cardbg1">
@@ -97,7 +104,7 @@ const navigate= useNavigate();
     <Fragment>
          {counselor&&counselor.approved?(
          <Fragment>
-             <button className="mt-3 ml-3" onClick={()=>navigate('/counselor/underprocess')}>Counseling Under Process</button>
+             <button className="mt-3 ml-3" onClick={()=>navigate('/counselor')}>Request List</button>
             <div className="mt-3" style={{ display: 'flex' }}>
             <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100">
                  <div className="card bg-primary">
@@ -173,8 +180,16 @@ const navigate= useNavigate();
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
                             <div className="linkcorner">
+                            Remark: <input type="text" value={remark} onChange={(e)=>setRemark(e.target.value)}></input>
+                            </div>
+                        </div>
+                        </div>
+                        <div className="card mb-0">
+                        <div className="card-header card-header-inner" data-toggle="collapse"
+                            data-parent="#accordion" href="#applicant_login">
+                            <div className="linkcorner">
                             <button className="mr-5"onClick={()=>setCurrentPage("1")}>Show Response</button>
-                           <button onClick={handleAccept}>Accept</button>
+                           <button onClick={handleSubmit}>Finished</button>
                             </div>
                         </div>
                         </div>
@@ -196,4 +211,4 @@ const navigate= useNavigate();
   )
 }
 
-export default Counselor
+export default UnderProcess

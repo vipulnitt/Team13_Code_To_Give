@@ -18,6 +18,9 @@ import Counselor from "./components/Counselor/Counselor";
 import { counselorLoadUser } from "./actions/counselorAction";
 import About from './components/Layout/About';
 import Faqs from "./components/Layout/Faqs";
+import UnderProcess from "./components/Counselor/UnderProcess";
+import User from "./components/User/User";
+import LoginCorner from "./components/Layout/LoginCorner";
 const App = () => {
   const {isAuthenticated,loading,user} = useSelector(state=> state.auth);
  const {isAuthenticatedCounselor} = useSelector(state=>state.Counselor);
@@ -51,8 +54,10 @@ const App = () => {
     <Routes>
       <Route path='/' Component={Home}/>
       <Route path='/about' Component={About}/>
+      <Route path='/login' Component={LoginCorner}/>
       <Route path='/faqs'Component={Faqs}/>
       <Route path='/admin/login' Component={Login}/>
+      <Route path='/user' Component={User}/>
       <Route path='/admin' element={
       <ProtectedRoute isLoggedIn={isAuthenticated}>
         <Admin/>
@@ -68,6 +73,11 @@ const App = () => {
      <Route path='/counselor' element={
       <ProtectedRoute isLoggedIn={isAuthenticatedCounselor}>
       <Counselor/>
+      </ProtectedRoute>
+    } exact/>
+    <Route path='/counselor/underprocess' element={
+      <ProtectedRoute isLoggedIn={isAuthenticatedCounselor}>
+      <UnderProcess/>
       </ProtectedRoute>
     } exact/>
     </Routes>

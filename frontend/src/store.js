@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {CounselorReducer, authReducer} from './reducers/adminReducers';
 import {counselingRequestReducer, counselorAuthReducer} from "./reducers/counselorReducer"
+import { questionReducer } from './reducers/questionReducer';
 
 const reducer = combineReducers({
   auth: authReducer,
   Counselors: CounselorReducer,
   Counselor: counselorAuthReducer,
-  counselingRequest:counselingRequestReducer
+  counselingRequest:counselingRequestReducer,
+  question: questionReducer
 
 })
 

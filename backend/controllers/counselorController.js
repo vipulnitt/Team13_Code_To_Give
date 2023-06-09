@@ -2,7 +2,7 @@ const Counselor = require('../models/counselor');
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError= require('../middleware/catchAsyncError');
 const sendToken = require('../utils/jwtTokenCounselor');
-const data = require('../models/data');
+const Data = require('../models/data');
 exports.registerConselor = catchAsyncError(async (req, res, next)=>{
     const {name, email, password,expertise,experience,mobileNumber} = req.body;
      const approved=false;
@@ -86,13 +86,17 @@ exports.updateCounselorPassword = catchAsyncError(async(req,res,next)=>{
 exports.counselingRequest = catchAsyncError(async(req,res,next)=>{
   const counselor= await Counselor.findById(req.counselor.id);
   const expertise = counselor.expertise;
-  //console.log(JSON.stringify(counselor));
   const response = [];
   for(let i=0;i<expertise.length;i++)
   {
-    const result = await data.find({addictionType:expertise[i]});
+    const result = await Data.find({addictionType:expertise[i]});
     for(let j=0;j<result.length;j++)
     {
+      
+      if(result[j].counselorDetails.isAssigned==true)
+      {
+        continue;
+      }
       response.push(result[j]);
     }
   }
@@ -101,5 +105,57 @@ exports.counselingRequest = catchAsyncError(async(req,res,next)=>{
   res.status(200).json({
     success:true,
     response:response
+})
+});
+exports.acceptCounseling  = catchAsyncError(async(req,res,next)=>{
+
+  const id= req.body.id;
+  var mongoose = require('mongoose');
+  var o_id =new mongoose.Types.ObjectId(id);
+  const result = await Data.findByIdAndUpdate({_id:o_id});
+  result.counselorDetails.counselorId=req.counselor.id;
+
+  result.counselorDetails.counselorName=req.counselor.name;
+  result.counselorDetails.isAssigned=true;
+  result.counselorDetails.status="underProcess";
+  result.save();
+
+  res.status(200).json({
+    success:true,
+    result
+})
+});
+
+exports.underProcess = catchAsyncError(async(req,res,next)=>{
+  const id= req.counselor.id;
+  const response = [];
+
+    const result = await Data.find({'counselorDetails.counselorId':id});
+    for(let j=0;j<result.length;j++)
+    {
+      if(result[j].counselorDetails.status==="underProcess")
+      response.push(result[j]);
+    }
+ 
+ 
+  res.status(200).json({
+    success:true,
+    response:response
+})
+});
+
+exports.finishedCounseling  = catchAsyncError(async(req,res,next)=>{
+  const id= req.body.id;
+  console.log(""+JSON.stringify(req.body));
+  var mongoose = require('mongoose');
+  var o_id =new mongoose.Types.ObjectId(id);
+  const result = await Data.findByIdAndUpdate({_id:o_id});
+  result.counselorDetails.status="closed";
+  result.counselorDetails.remark=req.body.remark;
+  result.save();
+
+  res.status(200).json({
+    success:true,
+    result
 })
 });

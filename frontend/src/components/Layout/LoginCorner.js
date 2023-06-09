@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 const LoginCorner = () => {
   return (
     <Fragment>
+        <div className="container d-flex justify-content-center mt-5">
+  
         <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100">
       <div className="card bg-dark">
                         <div className="card-header cardHead cardbg1">
@@ -36,6 +38,7 @@ const LoginCorner = () => {
                                   
                         </div>
      
+    </div>
     </div>
         </Fragment>
   )

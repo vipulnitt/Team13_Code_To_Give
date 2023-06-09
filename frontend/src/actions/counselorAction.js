@@ -166,7 +166,72 @@ export const counselorLogin = (email, password) => async (dispatch) => {
       type: COUNSELING_REQUEST,
     });
     const { data } = await axios.get('/api/v1/counselor/counselingrequest');
-    console.log("hello"+JSON.stringify(data));
+    dispatch({
+      type: COUNSELING_SUCCESS,
+      payload: data.response
+    });
+  } catch (error) {
+    dispatch({
+      type: COUNSELING_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+ }
+
+ export const acceptRequests= (s_id) => async (dispatch) =>{
+  try {
+    dispatch({
+      type: COUNSELING_REQUEST,
+    });
+    const config = {
+      headers: {
+        'content-type': 'application/json'
+      },
+    };
+
+    const { data } = await axios.put('/api/v1/counselor/acceptcounseling',{"id":s_id},config);
+    dispatch({
+      type: COUNSELING_SUCCESS,
+      payload: data.response
+    });
+  } catch (error) {
+    dispatch({
+      type: COUNSELING_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+ }
+
+ export const underProcess= () => async (dispatch) =>{
+  try {
+    dispatch({
+      type: COUNSELING_REQUEST,
+    });
+    const { data } = await axios.get('/api/v1/counselor/underprocess');
+    dispatch({
+      type: COUNSELING_SUCCESS,
+      payload: data.response
+    });
+  } catch (error) {
+    dispatch({
+      type: COUNSELING_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+ }
+
+ export const completed= (req) => async (dispatch) =>{
+  try {
+    dispatch({
+      type: COUNSELING_REQUEST,
+    });
+    const config = {
+      headers: {
+        'content-type': 'application/json'
+      },
+    };
+
+    const { data } = await axios.put('/api/v1/counselor/finishedcounseling',req,config);
     dispatch({
       type: COUNSELING_SUCCESS,
       payload: data.response

@@ -6,6 +6,6 @@ const { createQuestion, fetchQuestion } = require('../controllers/questionContro
 
 router.route('/addquestion').post(createQuestion,);
 
-router.route('/fetchquestion').get(fetchQuestion);
+router.route('/fetchquestion').post(fetchQuestion);
 
 module.exports= router;

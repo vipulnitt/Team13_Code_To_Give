@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const dataSchema = new mongoose.Schema({
   userId: {
     type: String,
-    required: true,
     unique: true
   },
   email: {
-    type: String
+    type: String,
+    unique:true
   },
   mobileNumber: {
     type: String
@@ -30,7 +30,27 @@ const dataSchema = new mongoose.Schema({
     type:Boolean,
     default:false
   },
-  
+  counselorDetails:{
+    isAssigned: {
+      type:Boolean,
+      default:false
+    },
+    counselorId:{
+      type:String
+    },
+    counselorName:{
+      type:String
+    },
+    status:{
+      type:String,
+      default:"notAccepted"
+    },
+    remark:{
+      type:String,
+      default:"Not mentioned"
+    }
+
+  }
 });
 
 module.exports = mongoose.model('Data', dataSchema);
