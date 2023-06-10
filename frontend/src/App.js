@@ -23,6 +23,7 @@ import LoginCorner from "./components/Layout/LoginCorner";
 import { CounselorProfile } from "./components/Admin/CounselorProfile";
 import CounselorList from "./components/Admin/CounselorList";
 import Response from "./components/Admin/Response";
+import Articles from "./components/Layout/Articles";
 const App = () => {
   const {isAuthenticated} = useSelector(state=> state.auth);
  const {isAuthenticatedCounselor} = useSelector(state=>state.Counselor);
@@ -57,6 +58,7 @@ const App = () => {
       <Route path='/' Component={Home}/>
       <Route path='/about' Component={About}/>
       <Route path='/login' Component={LoginCorner}/>
+      <Route path='/articles' Component={Articles}/>
       <Route path='/faqs'Component={Faqs}/>
       <Route path='/admin/login' Component={Login}/>
       <Route path='/user' Component={User}/>

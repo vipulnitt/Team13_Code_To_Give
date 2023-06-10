@@ -1,546 +1,146 @@
 import React from 'react';
 
+
 class Faqs extends React.Component {
   render() {
     return (
-      <div class="container">
-
-      <div class="row">
-
-        <div class="col-lg-9 col-md-9">
-          <div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="faq-block card-body">
-                  <div class="container-fluid py-2">
-                    <h2 class="mb-0">Drug</h2>
-                  </div>
-                  <div id="accordion-1" class="accordion">
-                    <div class="card">
-                      <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                          <a
-                            data-toggle="collapse"
-                            data-target="#collapseOne"
-                            aria-expanded="true"
-                            aria-controls="collapseOne"
-                          >
-                            How many instances of Lorum Ipsum usage can be found
-                            on the web?
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        id="collapseOne"
-                        class="collapse"
-                        aria-labelledby="headingOne"
-                        data-parent="#accordion-1"
-                      >
-                        <div class="card-body">
-                          <p class="mb-0">
-                            Anim pariatur cliche reprehenderit, enim eiusmod
-                            high life accusamus terry richardson ad squid. 3
-                            wolf moon officia aute, non cupidatat skateboard
-                            dolor brunch. Food truck quinoa nesciunt laborum
-                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                            a bird on it squid single-origin coffee nulla
-                            assumenda shoreditch et. Nihil anim keffiyeh
-                            helvetica, craft beer labore wes anderson cred
-                            nesciunt sapiente ea proident. Ad vegan excepteur
-                            butcher vice lomo. Leggings occaecat craft beer
-                            farm-to-table, raw denim aesthetic synth nesciunt
-                            you probably haven't heard of them accusamus labore
-                            sustainable VHS.
-                          </p>
-                          <p></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                          <a
-                            data-toggle="collapse"
-                            data-target="#collapseTwo"
-                            aria-expanded="false"
-                            aria-controls="collapseTwo"
-                          >
-                            What is Lorum Ipsum and who invented it?
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        id="collapseTwo"
-                        class="collapse"
-                        aria-labelledby="headingTwo"
-                        data-parent="#accordion-1"
-                      >
-                        <div class="card-body">
-                          <p class="mb-0">
-                            Anim pariatur cliche reprehenderit, enim eiusmod
-                            high life accusamus terry richardson ad squid. 3
-                            wolf moon officia aute, non cupidatat skateboard
-                            dolor brunch. Food truck quinoa nesciunt laborum
-                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                            a bird on it squid single-origin coffee nulla
-                            assumenda shoreditch et. Nihil anim keffiyeh
-                            helvetica, craft beer labore wes anderson cred
-                            nesciunt sapiente ea proident. Ad vegan excepteur
-                            butcher vice lomo. Leggings occaecat craft beer
-                            farm-to-table, raw denim aesthetic synth nesciunt
-                            you probably haven't heard of them accusamus labore
-                            sustainable VHS.
-                          </p>
-                          <p></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                          <a
-                            data-toggle="collapse"
-                            data-target="#collapseThree"
-                            aria-expanded="false"
-                            aria-controls="collapseThree"
-                          >
-                            How may times Lorum Ipsum has been used in this
-                            theme?
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        id="collapseThree"
-                        class="collapse"
-                        aria-labelledby="headingThree"
-                        data-parent="#accordion-1"
-                      >
-                        <div class="card-body">
-                          <p class="mb-0">
-                            Anim pariatur cliche reprehenderit, enim eiusmod
-                            high life accusamus terry richardson ad squid. 3
-                            wolf moon officia aute, non cupidatat skateboard
-                            dolor brunch. Food truck quinoa nesciunt laborum
-                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                            a bird on it squid single-origin coffee nulla
-                            assumenda shoreditch et. Nihil anim keffiyeh
-                            helvetica, craft beer labore wes anderson cred
-                            nesciunt sapiente ea proident. Ad vegan excepteur
-                            butcher vice lomo. Leggings occaecat craft beer
-                            farm-to-table, raw denim aesthetic synth nesciunt
-                            you probably haven't heard of them accusamus labore
-                            sustainable VHS.
-                          </p>
-                          <p></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      <div className="faq">
+        <div className="container text-center my-5">
+          <h2><strong>Frequently Asked Questions</strong></h2>
+          <div class="accordion accordion-flush my-5" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style={{backgroundColor:"#526D82",fontSize:'1.5rem',fontSize:'1.5rem'}}>
+                  How do I start the process of quitting addiction?
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left" style={{fontSize:'1.2rem' }}>
+                  To begin quitting any addiction, it's important to approach the process with determination and a plan. Here are some steps you can take to start your journey towards recovery:
+                  <ul >
+                    <li type='1'>
+                      Acknowledge the problem.
+                    </li>
+                    <li type='1'>
+                      Seek support from friends, family, or support groups.
+                    </li>
+                    <li type='1'>
+                      Set clear goals and establish a quit date.
+                    </li>
+                    <li type='1'>
+                    Remove triggers and temptations.
+                    </li>
+                    <li type='1'>
+                    Find healthy alternatives to replace addictive behaviors.
+                    </li>
+                    <li type='1'>
+                    Practice self-care and develop coping mechanisms.
+                    </li>
+                    <li type='1'>
+                    Celebrate milestones along the way.
+                    </li>
+                  </ul>
+                  
                 </div>
               </div>
             </div>
-
-            <div class="col-12 grid-margin grid-margin-md-0">
-              <div class="card">
-                <div class="faq-block card-body">
-                  <div class="container-fluid py-2">
-                    <h2 class="mb-0">Mobile Addiction</h2>
-                  </div>
-                  <div id="accordion-4" class="accordion">
-                    <div class="card">
-                      <div class="card-header" id="headingOne-4">
-                        <h5 class="mb-0">
-                          <a
-                            data-toggle="collapse"
-                            data-target="#collapseOne-4"
-                            aria-expanded="true"
-                            aria-controls="collapseOne-4"
-                          >
-                            Can I transfer the money from the wallet to my bank
-                            account?
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        id="collapseOne-4"
-                        class="collapse"
-                        aria-labelledby="headingOne-4"
-                        data-parent="#accordion-4"
-                      >
-                        <div class="card-body">
-                          <p class="mb-0">
-                            Anim pariatur cliche reprehenderit, enim eiusmod
-                            high life accusamus terry richardson ad squid. 3
-                            wolf moon officia aute, non cupidatat skateboard
-                            dolor brunch. Food truck quinoa nesciunt laborum
-                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                            a bird on it squid single-origin coffee nulla
-                            assumenda shoreditch et. Nihil anim keffiyeh
-                            helvetica, craft beer labore wes anderson cred
-                            nesciunt sapiente ea proident. Ad vegan excepteur
-                            butcher vice lomo. Leggings occaecat craft beer
-                            farm-to-table, raw denim aesthetic synth nesciunt
-                            you probably haven't heard of them accusamus labore
-                            sustainable VHS.
-                          </p>
-                          <p></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingTwo-4">
-                        <h5 class="mb-0">
-                          <a
-                            data-toggle="collapse"
-                            data-target="#collapseTwo-4"
-                            aria-expanded="false"
-                            aria-controls="collapseTwo-4"
-                          >
-                            I forgot my account password. What should I do?
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        id="collapseTwo-4"
-                        class="collapse"
-                        aria-labelledby="headingTwo-4"
-                        data-parent="#accordion-4"
-                      >
-                        <div class="card-body">
-                          <p class="mb-0">
-                            Anim pariatur cliche reprehenderit, enim eiusmod
-                            high life accusamus terry richardson ad squid. 3
-                            wolf moon officia aute, non cupidatat skateboard
-                            dolor brunch. Food truck quinoa nesciunt laborum
-                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                            a bird on it squid single-origin coffee nulla
-                            assumenda shoreditch et. Nihil anim keffiyeh
-                            helvetica, craft beer labore wes anderson cred
-                            nesciunt sapiente ea proident. Ad vegan excepteur
-                            butcher vice lomo. Leggings occaecat craft beer
-                            farm-to-table, raw denim aesthetic synth nesciunt
-                            you probably haven't heard of them accusamus labore
-                            sustainable VHS.
-                          </p>
-                          <p></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <div class="card-header" id="headingThree-4">
-                        <h5 class="mb-0">
-                          <a
-                            data-toggle="collapse"
-                            data-target="#collapseThree-4"
-                            aria-expanded="false"
-                            aria-controls="collapseThree-4"
-                          >
-                            What should I do if I need any assistance using my
-                            account
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        id="collapseThree-4"
-                        class="collapse"
-                        aria-labelledby="headingThree-4"
-                        data-parent="#accordion-4"
-                      >
-                        <div class="card-body">
-                          <p class="mb-0">
-                            Anim pariatur cliche reprehenderit, enim eiusmod
-                            high life accusamus terry richardson ad squid. 3
-                            wolf moon officia aute, non cupidatat skateboard
-                            dolor brunch. Food truck quinoa nesciunt laborum
-                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                            a bird on it squid single-origin coffee nulla
-                            assumenda shoreditch et. Nihil anim keffiyeh
-                            helvetica, craft beer labore wes anderson cred
-                            nesciunt sapiente ea proident. Ad vegan excepteur
-                            butcher vice lomo. Leggings occaecat craft beer
-                            farm-to-table, raw denim aesthetic synth nesciunt
-                            you probably haven't heard of them accusamus labore
-                            sustainable VHS.
-                          </p>
-                          <p></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style={{backgroundColor:"#526D82",fontSize:'1.5rem'}}>
+                  I am smoking for last three years continuously is it late to start quitting it now?
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left" style={{fontSize:'1.2rem' }}>
+                  No, it is never too late to start quitting smoking. Regardless of how long you have been smoking, quitting at any point can have significant health benefits. The sooner you quit, the better, as it reduces the risk of developing smoking-related diseases and improves overall health. Even after smoking for three years, quitting now can still greatly improve your well-being and reduce the potential long-term effects of smoking. Seek support, develop a plan, and take the first step towards quitting smoking for a healthier future.
+                  
                 </div>
               </div>
             </div>
-
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" style={{backgroundColor:"#526D82",fontSize:'1.5rem'}}>
+                  I regret after I get back to my senses after having drugs, I want to quit but I can't, what can I do?
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left" style={{fontSize:'1.2rem' }}>
+                  If you find yourself regretting drug use and struggling to quit, it's important to acknowledge the problem and seek support from trusted individuals or support groups. Consulting with a healthcare professional can provide guidance and treatment options tailored to your needs. Exploring rehabilitation programs, therapy, and counseling can help address the underlying factors contributing to your drug use. Avoiding triggers, considering therapy or counseling, and taking recovery one day at a time are important steps. Remember, reaching out to local resources for additional assistance and guidance can provide the support you need on your journey to recovery.
+                  
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour" style={{backgroundColor:"#526D82",fontSize:'1.5rem'}}>
+                  I am not able to take my mind away from porn whole day, what can I do?
+                </button>
+              </h2>
+              <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left" style={{fontSize:'1.2rem' }}>
+                  If you're struggling to take your mind away from porn throughout the day, there are steps you can take. Recognize the issue, understand triggers and patterns, create a supportive environment by using content filters and blockers, find healthy alternatives to occupy your mind, seek professional help from a therapist or counselor specializing in addiction, build a support network of trusted individuals, and prioritize self-care to improve overall well-being. Breaking free from a porn addiction takes time and effort, so be patient, celebrate small victories, and seek support when needed.
+                  
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFifth" aria-expanded="false" aria-controls="flush-collapseFifth" style={{backgroundColor:"#526D82",fontSize:'1.5rem'}}>
+                  How can I reduce my screen time and manage mobile addiction?
+                </button>
+              </h2>
+              <div id="flush-collapseFifth" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left" style={{fontSize:'1.2rem' }}>
+                  Set limits on phone usage, create phone-free zones or times, engage in alternative activities, and seek support from family or friends.
+                  
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSixth" aria-expanded="false" aria-controls="flush-collapseSixth" style={{backgroundColor:"#526D82",fontSize:'1.5rem'}}>
+                  What are the potential consequences of excessive alcohol consumption?
+                </button>
+              </h2>
+              <div id="flush-collapseSixth" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left" style={{fontSize:'1.2rem' }}>
+                  Consequences may include liver damage, impaired judgment, addiction, health issues, relationship problems, and increased risk of accidents.
+                  
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeventh" aria-expanded="false" aria-controls="flush-collapseSeventh" style={{backgroundColor:"#526D82",fontSize:'1.5rem'}}>
+                  What are the available treatment options for alcohol addiction?
+                </button>
+              </h2>
+              <div id="flush-collapseSeventh" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left" style={{fontSize:'1.2rem' }}>
+                  Treatment options may include detoxification, counseling, support groups (e.g., Alcoholics Anonymous), and therapy to address underlying issues.
+                  
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed text-left" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEigth" aria-expanded="false" aria-controls="flush-collapseEigth" style={{backgroundColor:"#526D82",fontSize:'1.5rem'}}>
+                  Are there any support groups or resources specifically for mobile addiction, alcohol addiction, porn addiction, or drug addiction?
+                </button>
+              </h2>
+              <div id="flush-collapseEigth" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-left" style={{fontSize:'1.2rem' }}>
+                  Yes, support groups such as Smartphone Addiction Anonymous, Alcoholics Anonymous, Sex Addicts Anonymous, and Narcotics Anonymous can provide guidance and support.
+                  
+                </div>
+              </div>
+            </div>
+            
           </div>
+          
         </div>
-
-        <div class="col-lg-9 col-md-9">
-            <div class="row">
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="faq-block card-body">
-                    <div class="container-fluid py-2">
-                      <h2 class="mb-0">Alcohol</h2>
-                    </div>
-                    <div id="accordion-3" class="accordion">
-                      <div class="card">
-                        <div class="card-header" id="headingOne-3">
-                          <h5 class="mb-0">
-                            <a
-                              data-toggle="collapse"
-                              data-target="#collapseOne-3"
-                              aria-expanded="true"
-                              aria-controls="collapseOne-3"
-                            >
-                              How many instances of Lorum Ipsum usage can be found
-                              on the web?
-                            </a>
-                          </h5>
-                        </div>
-                        <div
-                          id="collapseOne-3"
-                          class="collapse"
-                          aria-labelledby="headingOne-3"
-                          data-parent="#accordion-3"
-                        >
-                          <div class="card-body">
-                            <p class="mb-0">
-                              Anim pariatur cliche reprehenderit, enim eiusmod
-                              high life accusamus terry richardson ad squid. 3
-                              wolf moon officia aute, non cupidatat skateboard
-                              dolor brunch. Food truck quinoa nesciunt laborum
-                              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                              a bird on it squid single-origin coffee nulla
-                              assumenda shoreditch et. Nihil anim keffiyeh
-                              helvetica, craft beer labore wes anderson cred
-                              nesciunt sapiente ea proident. Ad vegan excepteur
-                              butcher vice lomo. Leggings occaecat craft beer
-                              farm-to-table, raw denim aesthetic synth nesciunt
-                              you probably haven't heard of them accusamus labore
-                              sustainable VHS.
-                            </p>
-                            <p></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" id="headingTwo-3">
-                          <h5 class="mb-0">
-                            <a
-                              data-toggle="collapse"
-                              data-target="#collapseTwo-3"
-                              aria-expanded="false"
-                              aria-controls="collapseTwo-3"
-                            >
-                              What is Lorum Ipsum and who invented it?
-                            </a>
-                          </h5>
-                        </div>
-                        <div
-                          id="collapseTwo-3"
-                          class="collapse"
-                          aria-labelledby="headingTwo-3"
-                          data-parent="#accordion-3"
-                        >
-                          <div class="card-body">
-                            <p class="mb-0">
-                              Anim pariatur cliche reprehenderit, enim eiusmod
-                              high life accusamus terry richardson ad squid. 3
-                              wolf moon officia aute, non cupidatat skateboard
-                              dolor brunch. Food truck quinoa nesciunt laborum
-                              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                              a bird on it squid single-origin coffee nulla
-                              assumenda shoreditch et. Nihil anim keffiyeh
-                              helvetica, craft beer labore wes anderson cred
-                              nesciunt sapiente ea proident. Ad vegan excepteur
-                              butcher vice lomo. Leggings occaecat craft beer
-                              farm-to-table, raw denim aesthetic synth nesciunt
-                              you probably haven't heard of them accusamus labore
-                              sustainable VHS.
-                            </p>
-                            <p></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" id="headingThree-3">
-                          <h5 class="mb-0">
-                            <a
-                              data-toggle="collapse"
-                              data-target="#collapseThree-3"
-                              aria-expanded="false"
-                              aria-controls="collapseThree-3"
-                            >
-                              How may times Lorum Ipsum has been used in this
-                              theme?
-                            </a>
-                          </h5>
-                        </div>
-                        <div
-                          id="collapseThree-3"
-                          class="collapse"
-                          aria-labelledby="headingThree-3"
-                          data-parent="#accordion-3"
-                        >
-                          <div class="card-body">
-                            <p class="mb-0">
-                              Anim pariatur cliche reprehenderit, enim eiusmod
-                              high life accusamus terry richardson ad squid. 3
-                              wolf moon officia aute, non cupidatat skateboard
-                              dolor brunch. Food truck quinoa nesciunt laborum
-                              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                              a bird on it squid single-origin coffee nulla
-                              assumenda shoreditch et. Nihil anim keffiyeh
-                              helvetica, craft beer labore wes anderson cred
-                              nesciunt sapiente ea proident. Ad vegan excepteur
-                              butcher vice lomo. Leggings occaecat craft beer
-                              farm-to-table, raw denim aesthetic synth nesciunt
-                              you probably haven't heard of them accusamus labore
-                              sustainable VHS.
-                            </p>
-                            <p></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12">
-                <div class="card">
-                  <div class="faq-block card-body">
-                    <div class="container-fluid py-2">
-                      <h2 class="mb-0">Section 4</h2>
-                    </div>
-  
-                    <div id="accordion-2" class="accordion">
-                      <div class="card">
-                        <div class="card-header" id="headingOne-2">
-                          <h5 class="mb-0">
-                            <a
-                              data-toggle="collapse"
-                              data-target="#collapseOne-2"
-                              aria-expanded="true"
-                              aria-controls="collapseOne-2"
-                            >
-                              How many instances of Lorum Ipsum usage can be found
-                              on the web?
-                            </a>
-                          </h5>
-                        </div>
-                        <div
-                          id="collapseOne-2"
-                          class="collapse"
-                          aria-labelledby="headingOne-2"
-                          data-parent="#accordion-2"
-                        >
-                          <div class="card-body">
-                            <p class="mb-0">
-                              Anim pariatur cliche reprehenderit, enim eiusmod
-                              high life accusamus terry richardson ad squid. 3
-                              wolf moon officia aute, non cupidatat skateboard
-                              dolor brunch. Food truck quinoa nesciunt laborum
-                              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                              a bird on it squid single-origin coffee nulla
-                              assumenda shoreditch et. Nihil anim keffiyeh
-                              helvetica, craft beer labore wes anderson cred
-                              nesciunt sapiente ea proident. Ad vegan excepteur
-                              butcher vice lomo. Leggings occaecat craft beer
-                              farm-to-table, raw denim aesthetic synth nesciunt
-                              you probably haven't heard of them accusamus labore
-                              sustainable VHS.
-                            </p>
-                            <p></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" id="headingTwo-2">
-                          <h5 class="mb-0">
-                            <a
-                              data-toggle="collapse"
-                              data-target="#collapseTwo-2"
-                              aria-expanded="false"
-                              aria-controls="collapseTwo-2"
-                            >
-                              What is Lorum Ipsum and who invented it?
-                            </a>
-                          </h5>
-                        </div>
-                        <div
-                          id="collapseTwo-2"
-                          class="collapse"
-                          aria-labelledby="headingTwo-2"
-                          data-parent="#accordion-2"
-                        >
-                          <div class="card-body">
-                            <p class="mb-0">
-                              Anim pariatur cliche reprehenderit, enim eiusmod
-                              high life accusamus terry richardson ad squid. 3
-                              wolf moon officia aute, non cupidatat skateboard
-                              dolor brunch. Food truck quinoa nesciunt laborum
-                              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                              a bird on it squid single-origin coffee nulla
-                              assumenda shoreditch et. Nihil anim keffiyeh
-                              helvetica, craft beer labore wes anderson cred
-                              nesciunt sapiente ea proident. Ad vegan excepteur
-                              butcher vice lomo. Leggings occaecat craft beer
-                              farm-to-table, raw denim aesthetic synth nesciunt
-                              you probably haven't heard of them accusamus labore
-                              sustainable VHS.
-                            </p>
-                            <p></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <div class="card-header" id="headingThree-2">
-                          <h5 class="mb-0">
-                            <a
-                              data-toggle="collapse"
-                              data-target="#collapseThree-2"
-                              aria-expanded="false"
-                              aria-controls="collapseThree-2"
-                            >
-                              How may times Lorum Ipsum has been used in this
-                              theme?
-                            </a>
-                          </h5>
-                        </div>
-                        <div
-                          id="collapseThree-2"
-                          class="collapse"
-                          aria-labelledby="headingThree-2"
-                          data-parent="#accordion-2"
-                        >
-                          <div class="card-body">
-                            <p class="mb-0">
-                              Anim pariatur cliche reprehenderit, enim eiusmod
-                              high life accusamus terry richardson ad squid. 3
-                              wolf moon officia aute, non cupidatat skateboard
-                              dolor brunch. Food truck quinoa nesciunt laborum
-                              eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                              a bird on it squid single-origin coffee nulla
-                              assumenda shoreditch et. Nihil anim keffiyeh
-                              helvetica, craft beer labore wes anderson cred
-                              nesciunt sapiente ea proident. Ad vegan excepteur
-                              butcher vice lomo. Leggings occaecat craft beer
-                              farm-to-table, raw denim aesthetic synth nesciunt
-                              you probably haven't heard of them accusamus labore
-                              sustainable VHS.
-                            </p>
-                            <p></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        
       </div>
-    </div>
     );
   }
 }

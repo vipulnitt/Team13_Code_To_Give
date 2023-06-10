@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadUser, logout } from '../../actions/adminAction';
@@ -39,32 +38,33 @@ const Header = () => {
   return (
     <Fragment>
       <>
-      <div>
-        <nav className="navbar navbar-expand-lg bg-dark navbar-dark my-0">
+      <div className='head'>
+        <nav className="navbar navbar-expand-lg navbar-dark my-0" style={{backgroundColor:"#27374D"}}>
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/"><img src="images/logo.png" alt="abc" style={{ width:"20%"}}/></Link>
+                <Link className="navbar-brand" to="/" style={{width:"200px"}}><img src="images/logo.png"  alt="DREAM" style={{ width:"100%"}}/></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav " style={{marginLeft:"10%"}}>
-                <li className="nav-item">
-                        <Link className={`nav-link ${location.pathname==="/"?"active":""}`} aria-current="page" to="/"><strong style={{fontSize:"1.1rem"}}>Home</strong> </Link>
+                <ul className="navbar-nav " style={{marginLeft:"65%"}}>
+                    <li className="nav-item mx-1">
+                        <Link className={`nav-link ${location.pathname==="/"?"active":""}`} aria-current="page" to="/"><strong style={{fontSize:"1.5rem"}}>Home</strong> </Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className={`nav-link ${location.pathname==="/articles"?"active":""}`} aria-current="page" to="/articles"><strong style={{fontSize:"1.1rem"}}>Articles</strong> </Link>
+                    <li className="nav-item mx-1">
+                        <Link className={`nav-link ${location.pathname==="/articles"?"active":""}`} aria-current="page" to="/articles"><strong style={{fontSize:"1.5rem"}}>Articles</strong> </Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className={`nav-link ${location.pathname==="/faqs"?"active":""}`} to="/faqs"><strong style={{fontSize:"1.1rem"}}>FAQs</strong> </Link>
+                    <li className="nav-item mx-1">
+                        <Link className={`nav-link ${location.pathname==="/faqs"?"active":""}`} to="/faqs"><strong style={{fontSize:"1.5rem"}}>FAQs</strong> </Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className={`nav-link ${location.pathname==="/about"?"active":""}`} aria-current="page" to="/about"><strong style={{fontSize:"1.1rem"}}>About</strong> </Link>
+                    <li className="nav-item mx-1">
+                        <Link className={`nav-link ${location.pathname==="/about"?"active":""}`} aria-current="page" to="/about"><strong style={{fontSize:"1.5rem"}}>About</strong> </Link>
                     </li>
-                    {!admin&&!counselor?(  <li className={`nav-item dropdown mx-1`}>
+                    
+                    {!admin&&!counselor?( <li className={`nav-item dropdown mx-1`}>
                       <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <strong style={{fontSize:"1.1rem"}}>Login</strong>
+                      <strong style={{fontSize:"1.5rem"}}>Login</strong>
                       </a>
-                      <ul className="dropdown-menu my-3 show" style={{backgroundColor: "#DDE6ED"}}>
+                      <ul className="dropdown-menu my-3" style={{backgroundColor: "#DDE6ED"}}>
                         <Link className="dropdown-item" to='/admin/login'>Admin</Link>
                         <Link className="dropdown-item" to='/counselor/login'>Counselor</Link>  
                       </ul>
