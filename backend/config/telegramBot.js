@@ -21,19 +21,24 @@ bot.on('message', async (msg) => {
       stage: "0"
     };
     sessionStore[userId] = session;
-    bot.sendMessage(chatId, 'Welcome! /start');
+    bot.sendMessage(chatId, 'Welcome! Your well-being is our top priority, and we assure you that your data will be secure. Our dedicated professionals are here to support you on your journey to recovery. Let us know how we can assist you in overcoming addiction and living a healthier life \n/start');
   } else {
+  
      try{
       if (msg.text === '/start') {
         handleQuestion(userId,chatId);
       }else if(sessionStore[userId].stage==="0")
       {    
+       
           if(sessionStore[userId].questionObj) {
+            
                  if(sessionStore[userId].questionObj.options)
                  {
+                  
                   const len=sessionStore[userId].questionObj.options.length;
                   if(len===0)
                   {
+                       
                       sessionStore[userId].currentQuestionId=sessionStore[userId].questionObj.isText.childId;
                       const ans={
                           q_id:sessionStore[userId].questionObj.questionId,
@@ -45,6 +50,7 @@ bot.on('message', async (msg) => {
                   }
                  }else
                  {
+                
                       sessionStore[userId].currentQuestionId=sessionStore[userId].questionObj.isText.childId;
                       const ans={
                           q_id:sessionStore[userId].questionObj.questionId,
@@ -72,7 +78,7 @@ bot.on('message', async (msg) => {
                       };
                       if(data)
                       await Data.create(data);
-                  bot.sendMessage(chatId, 'Thanks for booking appointment! Counselor will contact soon.');
+                  bot.sendMessage(chatId, 'Thanks for booking appointment! Counselor will contact soon. /restart');
               }else
               {
                 const data ={ 
@@ -84,7 +90,7 @@ bot.on('message', async (msg) => {
                  };
                  if(data)
                  await Data.create(data);
-                 bot.sendMessage(chatId, 'Thanks for booking appointment! Counselor will contact soon.');
+                 bot.sendMessage(chatId, 'Thanks for booking appointment! Counselor will contact soon. /restart');
               }
       }
      } catch(err){
@@ -180,10 +186,11 @@ function isValidEmail(email) {
           addictionType:sessionStore[userId].data[2].ans,
           questions:sessionStore[userId].data
          };
+         sessionStore[userId].stage="2";
+         bot.sendMessage(chatId, 'Thanks for Response! /restart');
          save(data);
       }
-        sessionStore[userId].stage="2";
-        bot.sendMessage(chatId, 'Thanks for Response!');
+      
         
       
     } else
@@ -194,14 +201,14 @@ function isValidEmail(email) {
         ans:ans
     };
 
-    const foundObject = sessionStore[userId].data.find(obj => obj === temp);
+    const foundObject = sessionStore[userId].data.find(obj => obj.statement === temp.statement);
     if(!foundObject)
     {
       sessionStore[userId].data.push(temp);
       sessionStore[userId].currentQuestionId=action;
      handleQuestion(chatId,userId);
     }else{
-      bot.sendMessage(chatId,"You have already answered this question.")
+      bot.sendMessage(chatId,"You have already answered this question. /restart")
     }
     }
     

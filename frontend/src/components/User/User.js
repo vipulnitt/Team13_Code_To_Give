@@ -21,6 +21,7 @@ const User = () => {
    
     useEffect(()=>{
      dispatch(getQuestion(questionId));
+     setOptionId(null);
     },[questionId]);
 
     if(optionId&&optionId.substring(1)==="notBooked")
@@ -46,6 +47,16 @@ const User = () => {
     }
    
     const handleNextQuestion = () => {
+        if(!optionId&&ans===""){
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "Please provide answer for this question",
+                showConfirmButton: false,
+                timer: 1000,
+              });
+              return;
+        }
         if(questionId==="booked")
     {
         const data ={ 
