@@ -14,6 +14,12 @@ const Home = () => {
   const {isAuthenticated,error, loading}= useSelector(state=>state.auth);
   const {isAuthenticatedCounselor}= useSelector(state=>state.Counselor);
   useEffect(()=>{
+    if(isAuthenticatedCounselor)
+    {
+      navigate('/counselor');
+    }
+  },[]);
+  useEffect(()=>{
       if(isAuthenticated) {
         navigate('/admin');
       }
@@ -32,11 +38,17 @@ const Home = () => {
     <Fragment>
       <br/>
       
-      <MetaData title={'Team13_Code_To_Give'}/>
-    
-  <br/>
-  <button className='ml-5' onClick={()=>navigate('/user')}>Need Help?</button>
-  <hr/>
+       <MetaData title={'Team13_Code_To_Give'}/> 
+      <div className='gifContainer'>
+        <img src="images/giphy.gif" className='gif' /> 
+      
+      <div className="opt">
+        <h3>Lets Communicate Over...</h3>     
+        <a href="/user" className="bt bt-color bt-animation-1"><img src="images/site.png" alt="" /> Site</a> 
+        <a href="#" className="bt bt-color bt-animation-1"><img src="images/telegram.png" alt="" /> Telegram</a>
+      </div>
+      
+      </div>
     </Fragment>
 
   )

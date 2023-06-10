@@ -2,12 +2,10 @@ const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
   userId: {
-    type: String,
-    unique: true
+    type: String
   },
   email: {
-    type: String,
-    unique:true
+    type: String
   },
   mobileNumber: {
     type: String

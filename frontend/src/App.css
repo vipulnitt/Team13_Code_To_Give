@@ -210,6 +210,152 @@ button:-moz-focusring,
   color: grey;
   margin-left: 0.5rem;
 }
+.gifContainer {
+  /* max-width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 56.25%; 16:9 aspect ratio (adjust as needed) */
+  display:flex;
+  width:100%;
+  height:80%;
+  position:absolute;
+  
+}
+
+.gif {
+  position: absolute;
+  flex:1;
+  width: 30%;
+  height: 60%;
+  margin-left: 13%;
+  margin-top: 8%;
+}
+
+.opt{
+  position: relative;
+  flex:1;
+  margin-left: 80%;
+  margin-top: 15%;
+}
+
+/* Media query for mobile phones */
+@media (max-width: 480px) {
+  .gifContainer {
+    padding-bottom: 100%; /* Adjust the aspect ratio for mobile screens */
+  }
+  .gif {
+    position: absolute;
+    width: 60%;
+    height: 50%;
+  }
+}
+
+.opt{
+  position:absolute;
+  align-items: center;
+  /* top:50%;
+  left:50%; */
+  padding-top: 10%;
+  transform : translate(-50% ,-50%);
+}
+.opt h3{
+  margin-bottom: 18%;
+}
+.bt img{
+  height:20px;
+  width:20px;
+  margin-right: 5px;
+}
+
+
+
+.bt:link,
+.bt:visited{
+  width: 300px;
+  font-size: 1.5rem;
+  margin-bottom: 4%;
+  text-decoration: none;
+  position:relative;
+  top:0;
+  left:0;
+  padding:20px 40px;
+  border-radius:100px;
+  display:inline-block;
+  transition: all .5s;
+}
+
+.bt-color{
+  background:#526D82;
+  color:#000;
+}
+
+.bt:hover{
+   box-shadow:0px 10px 10px #9DB2BF;
+   transform : translateY(-3px);
+   color:#000;
+}
+
+.bt:active{
+  box-shadow:0px 5px 10px #9DB2BF;
+  transform:translateY(-1px);
+}
+
+.bt-bottom-animation-1{
+  animation:comeFromBottom 1s ease-out .8s;
+}
+
+.bt::after{
+  content:"";
+  text-decoration: none;
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  border-radius:100px;
+  display:inline-block;
+  z-index:-1;
+  transition: all 1s;
+}
+
+.bt-color::after {
+    background: #9DB2BF;
+}
+
+.bt-animation-1:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+@keyframes comeFromBottom{
+  0%{
+    opacity:0;
+    transform:translateY(40px);
+  } 
+  100%{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* body {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 20px;
+  place-content: center;
+  background: #DAEDFB;
+} */
+.bt {
+  font-family: system-ui, sans-serif;
+  font-weight: bold;
+  font-size: 4rem;
+  cursor: pointer;
+  border: none;
+  margin: .1em;
+}
 
 /* Footer */
 footer {
@@ -437,6 +583,7 @@ footer {
 
 .rounded-circle {
   border-radius: 50% !important;
+  /* background-color: #29de7d; */
 }
 
 .btn.focus,
@@ -1757,4 +1904,3 @@ caption {
     width: 100%;
   }
 }
-

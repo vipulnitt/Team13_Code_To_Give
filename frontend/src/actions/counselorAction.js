@@ -20,6 +20,15 @@ import {
   COUNSELING_REQUEST,
   COUNSELING_SUCCESS,
   COUNSELING_FAIL,
+  EXPORT_REQUEST,
+  EXPORT_SUCCESS,
+  EXPORT_FAIL,
+  COUNSELING_ACCEPT_REQUEST,
+  COUNSELING_ACCEPT_SUCCESS,
+  COUNSELING_ACCEPT_FAIL,
+  COUNSELING_UP_REQUEST,
+  COUNSELING_UP_SUCCESS,
+  COUNSELING_UP_FAIL,
   CLEAR_ERRORS,
 } from '../constants/counselorConstant';
 
@@ -188,12 +197,15 @@ export const counselorLogin = (email, password) => async (dispatch) => {
         'content-type': 'application/json'
       },
     };
-
+   
     const { data } = await axios.put('/api/v1/counselor/acceptcounseling',{"id":s_id},config);
+
+    console.log(data);
     dispatch({
       type: COUNSELING_SUCCESS,
       payload: data.response
     });
+    
   } catch (error) {
     dispatch({
       type: COUNSELING_FAIL,
@@ -205,16 +217,16 @@ export const counselorLogin = (email, password) => async (dispatch) => {
  export const underProcess= () => async (dispatch) =>{
   try {
     dispatch({
-      type: COUNSELING_REQUEST,
+      type: COUNSELING_UP_REQUEST,
     });
     const { data } = await axios.get('/api/v1/counselor/underprocess');
     dispatch({
-      type: COUNSELING_SUCCESS,
+      type: COUNSELING_UP_SUCCESS,
       payload: data.response
     });
   } catch (error) {
     dispatch({
-      type: COUNSELING_FAIL,
+      type: COUNSELING_UP_FAIL,
       payload: error.response.data.message,
     });
   }
@@ -223,7 +235,7 @@ export const counselorLogin = (email, password) => async (dispatch) => {
  export const completed= (req) => async (dispatch) =>{
   try {
     dispatch({
-      type: COUNSELING_REQUEST,
+      type: COUNSELING_ACCEPT_REQUEST,
     });
     const config = {
       headers: {
@@ -233,12 +245,32 @@ export const counselorLogin = (email, password) => async (dispatch) => {
 
     const { data } = await axios.put('/api/v1/counselor/finishedcounseling',req,config);
     dispatch({
-      type: COUNSELING_SUCCESS,
+      type: COUNSELING_ACCEPT_SUCCESS,
       payload: data.response
     });
   } catch (error) {
     dispatch({
-      type: COUNSELING_FAIL,
+      type: COUNSELING_ACCEPT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+ }
+
+ export const getFinishedCounseling= () => async (dispatch) =>{
+  try {
+    dispatch({
+      type: EXPORT_REQUEST,
+    });
+  
+
+    const { data } = await axios.get('/api/v1/counselor/closedcounseling');
+    dispatch({
+      type: EXPORT_SUCCESS,
+      payload: data.response
+    });
+  } catch (error) {
+    dispatch({
+      type: EXPORT_FAIL,
       payload: error.response.data.message,
     });
   }

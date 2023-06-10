@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import {CounselorReducer, authReducer} from './reducers/adminReducers';
-import {counselingRequestReducer, counselorAuthReducer} from "./reducers/counselorReducer"
+import {CounselorReducer, Data, authReducer, graphReducer} from './reducers/adminReducers';
+import {counselingAcceptReducer, counselingRequestReducer, counselingUnderProcessReducer, counselorAuthReducer, exportData} from "./reducers/counselorReducer"
 import { questionReducer } from './reducers/questionReducer';
 
 const reducer = combineReducers({
@@ -10,7 +10,11 @@ const reducer = combineReducers({
   Counselors: CounselorReducer,
   Counselor: counselorAuthReducer,
   counselingRequest:counselingRequestReducer,
-  question: questionReducer
+  counselingAccept:counselingUnderProcessReducer,
+  question: questionReducer,
+  export: exportData,
+  graph:graphReducer,
+  data: Data
 
 })
 

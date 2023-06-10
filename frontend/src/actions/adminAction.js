@@ -26,6 +26,21 @@ import {
     PENDING_REQUEST,
     PENDING_SUCCESS,
     PENDING_FAIL,
+    PIE_DATA_REQUEST,
+    PIE_DATA_SUCCESS,
+    PIE_DATA_FAIL,
+    BAR_DATA_REQUEST,
+    BAR_DATA_SUCCESS,
+    BAR_DATA_FAIL,
+    ALL_DATA_REQUEST,
+    ALL_DATA_SUCCESS,
+    ALL_DATA_FAIL,
+    COUNSELOR_DATA_REQUEST,
+    COUNSELOR_DATA_SUCCESS,
+    COUNSELOR_DATA_FAIL,
+    COUNSELORS_LIST_REQUEST,
+    COUNSELORS_LIST_SUCCESS,
+    COUNSELORS_LIST_FAIL,
     CLEAR_ERRORS
 } from '../constants/adminConstant';
 
@@ -264,6 +279,117 @@ export const AcceptRequest =(id)=>async(dispatch)=>{
         } catch(error){
             dispatch({
                 type:PENDING_FAIL,
+                payload: error.response.data.message
+            })
+        }
+}
+
+export const getPieData =(id)=>async(dispatch)=>{
+    try{
+        dispatch({
+            type: PIE_DATA_REQUEST
+        })
+      
+        const {data} = await axios.get('/api/v1/addiction');
+        dispatch({
+            type:PIE_DATA_SUCCESS,
+            payload: data.results
+            
+        })
+    
+        } catch(error){
+            dispatch({
+                type:PIE_DATA_FAIL,
+                payload: error.response.data.message
+            })
+        }
+}
+
+export const getBarData =(id)=>async(dispatch)=>{
+    try{
+        dispatch({
+            type: BAR_DATA_REQUEST
+        })
+      
+        const {data} = await axios.get('/api/v1/agevsaddiction');
+        dispatch({
+            type:BAR_DATA_SUCCESS,
+            payload: data
+            
+        })
+    
+        } catch(error){
+            dispatch({
+                type:BAR_DATA_FAIL,
+                payload: error.response.data.message
+            })
+        }
+}
+export const getAllSubmissions =(currentPage=1)=>async(dispatch)=>{
+    try{
+        dispatch({
+            type: ALL_DATA_REQUEST
+        })
+      
+        const {data} = await axios.get(`/api/v1/allsubmissions?page=${currentPage}`);
+        dispatch({
+            type:ALL_DATA_SUCCESS,
+            payload: data
+            
+        })
+    
+        } catch(error){
+            dispatch({
+                type:ALL_DATA_FAIL,
+                payload: error.response.data.message
+            })
+        }
+}
+
+export const getCounselorById =(id)=>async(dispatch)=>{
+    try{
+        dispatch({
+            type:  COUNSELOR_DATA_REQUEST
+        })
+        const config = {
+            headers:{
+                'content-type': 'application/json'
+            }
+        }
+        const t ={"id":id};
+        const {data} = await axios.post(`/api/v1/getcounselorbyid`,t,config);
+        console.log("Hello"+JSON.stringify(data));
+        dispatch({
+            type:COUNSELOR_DATA_SUCCESS,
+            payload: data
+            
+        })
+    
+        } catch(error){
+            dispatch({
+                type:COUNSELOR_DATA_FAIL,
+                payload: error.response.data.message
+            })
+        }
+}
+export const getCounselorList =(currentPage=1)=>async(dispatch)=>{
+    try{
+        dispatch({
+            type:  COUNSELORS_LIST_REQUEST
+        })
+    
+        const {data} = await axios.get(`/api/v1/getcounselorslist?page=${currentPage}`);
+        console.log(JSON.stringify(data));
+
+        dispatch({
+            type:COUNSELORS_LIST_SUCCESS,
+            payload: data
+            
+        })
+    
+        } catch(error){
+            dispatch({
+                type:COUNSELORS_LIST_FAIL,
                 payload: error.response.data.message
             })
         }

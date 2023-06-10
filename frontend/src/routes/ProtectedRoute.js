@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 const ProtectedRoute = ({ isLoggedIn, children }) => {
-  if (!isLoggedIn) {
+  if (!isLoggedIn&&( !document.cookie.includes("counselorToken")||!document.cookie.includes("token"))) {
     return <Navigate to="/" replace />;
   }
   return children;

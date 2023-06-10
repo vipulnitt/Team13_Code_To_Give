@@ -120,9 +120,27 @@ exports.acceptCounseling  = catchAsyncError(async(req,res,next)=>{
   result.counselorDetails.status="underProcess";
   result.save();
 
+  const counselor= await Counselor.findById(req.counselor.id);
+  const expertise = counselor.expertise;
+  const response = [];
+  for(let i=0;i<expertise.length;i++)
+  {
+    const result = await Data.find({addictionType:expertise[i]});
+    for(let j=0;j<result.length;j++)
+    {
+      
+      if(result[j].counselorDetails.isAssigned==true)
+      {
+        continue;
+      }
+      response.push(result[j]);
+    }
+  }
+ 
+ 
   res.status(200).json({
     success:true,
-    result
+    response:response
 })
 });
 
@@ -154,8 +172,27 @@ exports.finishedCounseling  = catchAsyncError(async(req,res,next)=>{
   result.counselorDetails.remark=req.body.remark;
   result.save();
 
+  const response = [];
   res.status(200).json({
     success:true,
-    result
+    response:response
+})
+});
+
+exports.getClosedData  = catchAsyncError(async(req,res,next)=>{
+  const id= req.counselor.id;
+  const response = [];
+
+    const result = await Data.find({'counselorDetails.counselorId':id});
+    for(let j=0;j<result.length;j++)
+    {
+      if(result[j].counselorDetails.status==="closed")
+      response.push(result[j]);
+    }
+ 
+ 
+  res.status(200).json({
+    success:true,
+    response:response
 })
 });

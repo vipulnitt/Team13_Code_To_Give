@@ -27,6 +27,21 @@ import {
     PENDING_REQUEST,
     PENDING_SUCCESS,
     PENDING_FAIL,
+    PIE_DATA_REQUEST,
+    PIE_DATA_SUCCESS,
+    PIE_DATA_FAIL,
+    BAR_DATA_REQUEST,
+    BAR_DATA_SUCCESS,
+    BAR_DATA_FAIL,
+    ALL_DATA_REQUEST,
+    ALL_DATA_SUCCESS,
+    ALL_DATA_FAIL,
+    COUNSELOR_DATA_REQUEST,
+    COUNSELOR_DATA_SUCCESS,
+    COUNSELOR_DATA_FAIL,
+    COUNSELORS_LIST_REQUEST,
+    COUNSELORS_LIST_SUCCESS,
+    COUNSELORS_LIST_FAIL,
     CLEAR_ERRORS
 } from '../constants/adminConstant';
 
@@ -190,4 +205,88 @@ export const CounselorReducer = (state ={counselors:{}},action)=>{
            default:
             return state;
         }
+}
+export const graphReducer= (state ={pie:{},bar:{}},action)=>{
+
+    switch(action.type){
+        case BAR_DATA_REQUEST:
+        case PIE_DATA_REQUEST:
+            return{
+                ...state,
+                loading:true
+           }
+        case PIE_DATA_SUCCESS:
+            return {
+                ...state,
+                loading:false,
+                pie: action.payload
+            }
+        case BAR_DATA_SUCCESS:
+            return {
+                ...state,
+                loading:false,
+                bar: action.payload
+            }
+        case BAR_DATA_FAIL:
+        case PIE_DATA_FAIL:
+            return{
+                ...state,
+                loading:false,
+                error:action.payload
+            }
+            case CLEAR_ERRORS:
+                return {
+                    ...state,
+                    error:null
+                }
+       default:
+        return state;
+    }
+
+}
+export const Data= (state ={all:{},selectedCounselor:{},counselorList:{}},action)=>{
+
+    switch(action.type){
+        case ALL_DATA_REQUEST:
+        case COUNSELOR_DATA_REQUEST:
+        case COUNSELORS_LIST_REQUEST:
+            return{
+                ...state,
+                loading:true
+           }
+        case ALL_DATA_SUCCESS:
+            return {
+                ...state,
+                loading:false,
+                all: action.payload
+            }
+        case COUNSELOR_DATA_SUCCESS:
+            return {
+                ...state,
+                loading:false,
+                selectedCounselor: action.payload
+            }
+       case COUNSELORS_LIST_SUCCESS:
+            return {
+                ...state,
+                loading:false,
+                counselorList: action.payload
+            }
+        case ALL_DATA_FAIL:
+        case COUNSELOR_DATA_FAIL:
+        case COUNSELORS_LIST_FAIL:
+            return{
+                ...state,
+                loading:false,
+                error:action.payload
+            }
+            case CLEAR_ERRORS:
+                return {
+                    ...state,
+                    error:null
+                }
+       default:
+        return state;
+    }
+
 }

@@ -10,7 +10,7 @@
     {
         "questionId":"BASE1",
         "statement":"What is your gender?",
-        "options":[{"option":"Male","childId":"BASE2"},{"option":"Female","childId":"BASE2"}],
+        "options":[{"option":"Male","childId":"BASE2"},{"option":"Female","childId":"BASE2"},{"option":"Other","childId":"BASE2"}],
         "parentId":"BASE0"
     },
     {
@@ -723,11 +723,45 @@
 },
 {
   "questionId": "Counseling",
-  "statement": "You Need Counseling Please Enter Email or Mobile Number?",
-"parentId": "null",
-"isText":{
-  "childId":"email"
-}
+  "statement": "Do You want to book appointment for Counseling?",
+
+   "parentId": "null",
+   "options": [
+    {
+      "option": "Yes",
+      "childId": "booked"
+    },
+    {
+      "option": "No",
+      "childId": "notBooked"
+    }
+  ]
+  
+},
+{
+  "questionId": "NoCounseling",
+  "statement": "Do You want to book appointment for Counseling?",
+
+   "parentId": "null",
+   "options": [
+    {
+      "option": "Yes",
+      "childId": "booked"
+    },
+    {
+      "option": "No",
+      "childId": "notBooked"
+    }
+  ]
+  
+},
+{
+  "questionId": "booked",
+  "statement": "Enter your mail or mobile number?",
+    "parentId": "null",
+   "isText":{
+    "childId":"completed"
+ }
   
 }
 ]

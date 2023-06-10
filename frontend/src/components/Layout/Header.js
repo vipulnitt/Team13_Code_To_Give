@@ -60,8 +60,14 @@ const Header = () => {
                     <li className="nav-item">
                         <Link className={`nav-link ${location.pathname==="/about"?"active":""}`} aria-current="page" to="/about"><strong style={{fontSize:"1.1rem"}}>About</strong> </Link>
                     </li>
-                    {!admin&&!counselor?( <li className="nav-item">
-                        <Link className={`nav-link ${location.pathname==="/login"?"active":""}`} aria-current="page" to="/login"><strong style={{fontSize:"1.1rem"}}>Login</strong> </Link>
+                    {!admin&&!counselor?(  <li className={`nav-item dropdown mx-1`}>
+                      <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <strong style={{fontSize:"1.1rem"}}>Login</strong>
+                      </a>
+                      <ul className="dropdown-menu my-3 show" style={{backgroundColor: "#DDE6ED"}}>
+                        <Link className="dropdown-item" to='/admin/login'>Admin</Link>
+                        <Link className="dropdown-item" to='/counselor/login'>Counselor</Link>  
+                      </ul>
                     </li>):(<></>)}
 
                    
@@ -82,7 +88,9 @@ const Header = () => {
                       
                           <div className="dropdown-content" aria-labelledby="dropDownMenuButton">
                           <Link  to='/profile'>Profile</Link>
+                          {<Link to='/admin/counselors'>Counselors</Link>}
                             {<Link to='/admin/pendingRequest'>Pending Request</Link>}
+                            {<Link to='/admin/response'>Responses</Link>}
                             <Link  to='/' onClick={logoutHandler}>Logout</Link>
                             </div>
 

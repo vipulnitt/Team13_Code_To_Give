@@ -16,7 +16,6 @@ const navigate= useNavigate();
   },[dispatch]);
   const handleAccept=()=>{
         dispatch(acceptRequests(currentSelect._id));
-
         Swal.fire({
             icon: 'success',
             title: 'Counselor',
@@ -110,9 +109,9 @@ const navigate= useNavigate();
                     </div>
             
                     {loading?<Loader/>:<>
-                    {Array.isArray(requests) && requests.map((c) =>(
-                        <div className="card mb-0">
-                        <div className="card-header Array.isArray(requests) &&card-header-inner" data-toggle="collapse"
+                    {Array.isArray(requests) && requests.map((c, index) => (
+                   <div className="card mb-0" key={index}>
+                        <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
                             <div className="linkcorner">
                                <Link onClick={()=>setCurrentSelect(c)}>

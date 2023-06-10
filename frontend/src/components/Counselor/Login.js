@@ -12,7 +12,7 @@ const Login =()  => {
   const navigate = useNavigate();
  const {isAuthenticatedCounselor,error, loading}= useSelector(state=>state.Counselor);
   useEffect(()=>{
-    console.log(" "+isAuthenticatedCounselor);
+
     if(isAuthenticatedCounselor) {
       Swal.fire({
         icon: 'success',
@@ -22,21 +22,10 @@ const Login =()  => {
         timer: 1500,
       });
       navigate('/counselor');
-    }
-    if(error){
+    }else if(error){
       
-        if(error){
-          
-          Swal.fire({
-            icon: 'error',
-            title: 'OOPS!',
-            text: error,
-            showConfirmButton: false,
-            timer: 1500,
-          });
             dispatch(clearErrors());
-        }
-        dispatch(clearErrors());
+      
     }
 },[dispatch,isAuthenticatedCounselor,error]);
  const submitHandler = (e) =>{

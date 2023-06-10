@@ -3,6 +3,8 @@ const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError= require('../middleware/catchAsyncError');
 const sendToken = require('../utils/jwtToken');
 const Counselor = require('../models/counselor');
+const Data = require('../models/data');
+const APIFeatures = require('../utils/apiFeatures');
 exports.registerAdmin = catchAsyncError(async (req, res, next)=>{
     const {name, email, password} = req.body;
 
@@ -110,5 +112,44 @@ exports.acceptCounselorRequest= catchAsyncError(async(req,res,next)=>{
         counselor
     });
 
-    
 })
+
+exports.getAllSubmissions = catchAsyncError(async(req,res,next)=>{
+
+const dataCount = await Data.countDocuments();
+const resPerPage=4;
+ const apiFeatures = new APIFeatures(Data.find(),req.query).search().filter().pagination(resPerPage);
+ const data = await apiFeatures.query;
+    res.status(200).json({
+        success:true,
+        count: dataCount,
+        resPerPage,
+        data
+    });
+
+})
+
+exports.getCounselorById = catchAsyncError(async(req,res,next)=>{
+    const id=req.body.id;
+    var mongoose = require('mongoose');
+    var o_id =new mongoose.Types.ObjectId(id);
+   const counselor =await Counselor.findOne({_id: o_id});
+    res.status(200).json({
+        success:true,
+        counselor
+    });
+})
+
+exports.getCounselorList = catchAsyncError(async(req,res,next)=>{
+    const dataCount = await Counselor.countDocuments({approved:true});
+     const resPerPage=4;
+
+   const apiFeatures = new APIFeatures(Counselor.find({approved:true}),req.query).search().filter().pagination(resPerPage);
+ const counselors = await apiFeatures.query;
+    res.status(200).json({
+        success:true,
+        resPerPage,
+        count:dataCount,
+        counselors
+    });
+    })

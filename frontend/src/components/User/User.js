@@ -22,38 +22,53 @@ const User = () => {
     useEffect(()=>{
      dispatch(getQuestion(questionId));
     },[questionId]);
-    if(questionId==="NoCounseling")
+
+    if(optionId&&optionId.substring(1)==="notBooked")
     {
-                 return(<Fragment>
-                    You Don't Need Counseling
-                 </Fragment>)
-    }
-   
-    const handleNextQuestion = () => {
-        if(questionId==="Counseling")
-        {
             const data ={ 
-                userId:ans,
-                email:ans, 
+                userId:"NotProvided",
+                email:"NotProvided", 
                 Counseling:true,
                 addictionType:addictionType,
                 questions:responses
                };
-               console.log(data);
                dispatch(submitData(data));
             
                Swal.fire({
                 icon: 'success',
-                title: 'Thanks for booking appointment!',
-                text: "Counselor will contact you soon",
+                title: 'Thanks for Sharing information!',
+                text: "Your information valuable for us",
                 showConfirmButton: false,
                 timer: 10000,
               });
-            
+              setOptionId(null);
                navigate('/');
-              
-        }
-        {
+    }
+   
+    const handleNextQuestion = () => {
+        if(questionId==="booked")
+    {
+        const data ={ 
+            userId:ans,
+            email:ans, 
+            Counseling:true,
+            addictionType:addictionType,
+            questions:responses
+           };
+           dispatch(submitData(data));
+        
+           Swal.fire({
+            icon: 'success',
+            title: 'Thanks for booking appointment!',
+            text: "Counselor will contact you soon",
+            showConfirmButton: false,
+            timer: 10000,
+          });
+      //    setOptionId(null);
+           navigate('/');
+          
+          }else
+          {
             if(question.isText)
             {
                 const a = {
@@ -80,7 +95,10 @@ const User = () => {
                   setResponses(prevResponses => [...prevResponses, a]);
                   setQuestionId(optionId.substring(1));
             }
-        }
+        
+          }
+      
+            
         
       
       };

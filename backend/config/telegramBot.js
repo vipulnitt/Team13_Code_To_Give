@@ -11,7 +11,7 @@ bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userId = msg.from.id;
  
-  if (!sessionStore[userId]) {
+  if (!sessionStore[userId]||msg.text==='/restart') {
     const session = {
       userId: userId,
       sessionId: generateSessionId(),
@@ -56,13 +56,9 @@ bot.on('message', async (msg) => {
                  }
           }
       }
-      if(sessionStore[userId].stage==="1")
+     if(sessionStore[userId].stage==="2")
       {
-          bot.sendMessage(chatId, 'Please Share your email or mobile number!');
-          sessionStore[userId].stage="3";
-      }else if(sessionStore[userId].stage==="2")
-      {
-          bot.sendMessage(chatId, 'You do not need counseling!');
+          bot.sendMessage(chatId, 'Thanks for sharing details /restart!');
       }else if(sessionStore[userId].stage==="3")
       {
               if(isValidEmail(msg.text))
@@ -74,19 +70,26 @@ bot.on('message', async (msg) => {
                        addictionType:sessionStore[userId].data[2].ans,
                        questions:sessionStore[userId].data
                       };
+                      if(data)
                       await Data.create(data);
-                  bot.sendMessage(chatId, 'Thanks for sharing your email! Counselor will contact soon.');
-              }else if(isValidIndianMobileNumber(msg.text))
+                  bot.sendMessage(chatId, 'Thanks for booking appointment! Counselor will contact soon.');
+              }else
               {
-                  bot.sendMessage(chatId, 'Thanks for sharing your Mobile Number! Counselor will contact soon.');
+                const data ={ 
+                  email:msg.text,
+                  userId:userId, 
+                  Counseling:true,
+                  addictionType:sessionStore[userId].data[2].ans,
+                  questions:sessionStore[userId].data
+                 };
+                 if(data)
+                 await Data.create(data);
+                 bot.sendMessage(chatId, 'Thanks for booking appointment! Counselor will contact soon.');
               }
       }
      } catch(err){
-      bot.sendMessage(chatId, 'Sorry, an error occurred while fetching the data.' + err.message);
+      bot.sendMessage(chatId, 'Sorry, an error occurred while fetching the data. /restart' );
      }
-   
-
-   
   }
 });
 
@@ -122,7 +125,7 @@ const handleQuestion= async(userId,chatId)=>{
               inline_keyboard: inline_keyboard
           }
       };
-   //   console.log(updatedReplyMarkup)
+
         const message = `${question}\n`;
         bot.sendMessage(chatId, message,updatedReplyMarkup);
       } else {
@@ -130,7 +133,7 @@ const handleQuestion= async(userId,chatId)=>{
         bot.sendMessage(chatId, message);
       }
     } catch (error) {
-      bot.sendMessage(chatId, 'Sorry, an error occurred while fetching the data.' + error.message);
+      bot.sendMessage(chatId, 'Sorry, an error occurred while fetching the data. /restart');
     }
 };
 
@@ -140,11 +143,6 @@ function isValidEmail(email) {
     return emailRegex.test(email);
   }
 
-  function isValidIndianMobileNumber(mobileNumber) {
-    const mobileNumberRegex = /^[6-9]\d{9}$/;
-    
-    return mobileNumberRegex.test(mobileNumber);
-  }
 
  
   bot.on('callback_query', function onCallbackQuery(callbackQuery) {
@@ -154,7 +152,6 @@ function isValidEmail(email) {
     const action = callbackQuery.data;
     const message= callbackQuery.message;
     var ans=null;
-    console.log(JSON.stringify(sessionStore[userId].data));
     for (const row of message.reply_markup.inline_keyboard) {
       for (const button of row) {
         if (button.callback_data === action) {
@@ -167,28 +164,41 @@ function isValidEmail(email) {
       }
     }
 
-    if(action==="Counseling")
+    if(sessionStore[userId].currentQuestionId==="Counseling"||sessionStore[userId].currentQuestionId==="NoCounseling")
     {
-      sessionStore[userId].stage="1";
-      bot.sendMessage(chatId, 'Please Share your email or mobile number!');
-        sessionStore[userId].stage="3";
-    }else if(action==="NoCounseling")
-    {
-      sessionStore[userId].sessionStore[userId].stage="2";
-      bot.sendMessage(chatId, 'You do not need counseling!');
-    }else
+      if(action==="booked")
+      {
+        sessionStore[userId].stage="1";
+        bot.sendMessage(chatId, 'Please Share your email or mobile number!');
+          sessionStore[userId].stage="3";
+      }else
+      {
+        const data ={ 
+          email:"NotProvided",
+          userId:userId, 
+          Counseling:true,
+          addictionType:sessionStore[userId].data[2].ans,
+          questions:sessionStore[userId].data
+         };
+         save(data);
+      }
+        sessionStore[userId].stage="2";
+        bot.sendMessage(chatId, 'Thanks for Response!');
+        
+      
+    } else
     {
       const temp={
         q_id:sessionStore[userId].questionObj.questionId,
         statement:message.text,
         ans:ans
     };
+
     const foundObject = sessionStore[userId].data.find(obj => obj === temp);
     if(!foundObject)
     {
       sessionStore[userId].data.push(temp);
       sessionStore[userId].currentQuestionId=action;
-      console.log("Hello");
      handleQuestion(chatId,userId);
     }else{
       bot.sendMessage(chatId,"You have already answered this question.")
@@ -198,3 +208,10 @@ function isValidEmail(email) {
    
  
   });
+
+  async function save(data)
+  {
+    if(data)
+    await Data.create(data);
+
+  }

@@ -6,7 +6,7 @@ import Loader from '../../Loader';
 import Swal from 'sweetalert2';
 const UnderProcess = () => {
 const {counselor} = useSelector(state=>state.Counselor);
-const { requests,loading} = useSelector(state=>state.counselingRequest);
+const { requests,loading} = useSelector(state=>state.counselingAccept);
 const [currentSelect,setCurrentSelect] = useState(null); 
 const [currentPage,setCurrentPage] = useState(0); 
 const [remark,setRemark] = useState(''); 
@@ -30,6 +30,7 @@ const navigate = useNavigate();
             "remark":remark
           }
           dispatch(completed(data));
+          navigate('/');
           setCurrentSelect(null);
           setRemark('');
        
@@ -117,9 +118,9 @@ const navigate = useNavigate();
                     </div>
             
                     {loading?<Loader/>:<>
-                    {Array.isArray(requests) && requests.map((c) =>(
-                        <div className="card mb-0">
-                        <div className="card-header Array.isArray(requests) &&card-header-inner" data-toggle="collapse"
+                    {Array.isArray(requests) && requests.map((c, index) => (
+                         <div className="card mb-0" key={index}> 
+                        <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
                             <div className="linkcorner">
                                <Link onClick={()=>setCurrentSelect(c)}>

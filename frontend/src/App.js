@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import Header from './components/Layout/Header';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Footer from "./components/Layout/Footer";
 import Home from "./components/Layout/Home";
 import Admin from "./components/Admin/Admin";
 import Login from "./components/Admin/index";
@@ -21,8 +20,11 @@ import Faqs from "./components/Layout/Faqs";
 import UnderProcess from "./components/Counselor/UnderProcess";
 import User from "./components/User/User";
 import LoginCorner from "./components/Layout/LoginCorner";
+import { CounselorProfile } from "./components/Admin/CounselorProfile";
+import CounselorList from "./components/Admin/CounselorList";
+import Response from "./components/Admin/Response";
 const App = () => {
-  const {isAuthenticated,loading,user} = useSelector(state=> state.auth);
+  const {isAuthenticated} = useSelector(state=> state.auth);
  const {isAuthenticatedCounselor} = useSelector(state=>state.Counselor);
 
   useEffect(()=>{
@@ -68,6 +70,21 @@ const App = () => {
         <PendingRequest/>
       </ProtectedRoute>
     } exact/>
+     <Route path='/admin/counselor' element={
+      <ProtectedRoute isLoggedIn={isAuthenticated}>
+        <CounselorProfile/>
+      </ProtectedRoute>
+    } exact/>
+    <Route path='/admin/counselors' element={
+      <ProtectedRoute isLoggedIn={isAuthenticated}>
+        <CounselorList/>
+      </ProtectedRoute>
+    } exact/>
+    <Route path='/admin/response' element={
+      <ProtectedRoute isLoggedIn={isAuthenticated}>
+        <Response/>
+      </ProtectedRoute>
+    } exact/>
      <Route path='/counselor/register' Component={Register}/>
      <Route path='/counselor/login' Component={LoginCounselor}/>
      <Route path='/counselor' element={
@@ -84,7 +101,6 @@ const App = () => {
     </Router>
 
  
- <Footer/>
  </div>
  );
 };
