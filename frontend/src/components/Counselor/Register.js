@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { counselorRegister } from '../../actions/counselorAction';
 import { Link, useNavigate } from 'react-router-dom';
-import MetaData from '../Layout/MetaData';
+import Swal from 'sweetalert2';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ const Register = () => {
     expertise: [],
     experience: '',
   });
-
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -38,144 +38,139 @@ const Register = () => {
       }
     });
   };
-  const navigate = useNavigate();
- const dispatch= useDispatch();
+
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const jsonFormat = JSON.stringify(formData);
-    console.log(jsonFormat);
+    //const jsonFormat = JSON.stringify(formData);
     dispatch(counselorRegister(formData));
-    navigate('/');
     
+    Swal.fire({
+      icon: 'success',
+      title: 'Registed',
+      text: "Successfully ",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    navigate('/counselor');
   };
 
   return (
     <Fragment>
-      
-      <MetaData title={'Counselor Register'}/>
-        <div className="container container-fluid">
+      <div className="container container-fluid" style={{ marginLeft: '7%' }}>
         <div className="row wrapper">
           <div className="col-10 col-lg-5">
             <form className="shadow-lg" onSubmit={handleSubmit}>
-              <h1 className="mb-3">Register</h1>
+              <h1 className="mb-5 text-center">Register</h1>
               <div className="form-group">
-                <label htmlFor="name">
-                  Name:
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="form-control"
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  className="form-control"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Name"
+                />
               </div>
               <div className="form-group">
-                <label htmlFor="email">
-                  Email:
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    className="form-control"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  className="form-control"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="E-mail"
+                />
               </div>
               <div className="form-group">
-                <label htmlFor="password">
-                  Password:
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    className="form-control"
-                    value={formData.password}
-                    onChange={handleChange}
-                  />
-                </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="form-control"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Password"
+                />
               </div>
               <div className="form-group">
-                <label htmlFor="mobileNumber">
-                  Mobile Number:
-                  <input
-                    type="tel"
-                    name="mobileNumber"
-                    id="mobileNumber"
-                    className="form-control"
-                    value={formData.mobileNumber}
-                    onChange={handleChange}
-                  />
-                </label>
+                <input
+                  type="tel"
+                  name="mobileNumber"
+                  id="mobileNumber"
+                  className="form-control"
+                  value={formData.mobileNumber}
+                  onChange={handleChange}
+                  placeholder="Mobile Number"
+                />
               </div>
               <div className="form-group">
-                <label htmlFor="experience">
-                  Experience (year):
-                  <input
-                    type="text"
-                    name="experience"
-                    id="experience"
-                    className="form-control"
-                    value={formData.experience}
-                    onChange={handleChange}
-                  />
-                </label>
+                <input
+                  type="text"
+                  name="experience"
+                  id="experience"
+                  className="form-control"
+                  value={formData.experience}
+                  onChange={handleChange}
+                  placeholder="Experience"
+                />
+                <label htmlFor="expertise">Expertise</label>
+                <br />
+                <input
+                  type="checkbox"
+                  name="expertise_Drugs"
+                  value="Drugs"
+                  style={{ transform: "scale(1.5)" }}
+                  checked={formData.expertise.includes('Drugs')}
+                  onChange={handleCheckboxChange}
+                />
+                <b>Drugs</b>
+                <input
+                  type="checkbox"
+                  name="expertise_Porn"
+                  value="Porn"
+                  className="ml-3"
+                  style={{ transform: "scale(1.5)" }}
+                  checked={formData.expertise.includes('Porn')}
+                  onChange={handleCheckboxChange}
+                />
+               <b>Porn</b> 
+                <input
+                  type="checkbox"
+                  name="expertise_Alcohol"
+                  value="Alcohol"
+                  className="ml-3"
+                  style={{ transform: "scale(1.5)" }}
+                  checked={formData.expertise.includes('Alcohol')}
+                  onChange={handleCheckboxChange}
+                />
+                <b>Alcohol</b>
+                <input
+                  type="checkbox"
+                  name="expertise_Mobile"
+                  value="Mobile"
+                  className="ml-3"
+                  style={{ transform: "scale(1.5)" }}
+                  checked={formData.expertise.includes('Mobile')}
+                  onChange={handleCheckboxChange}
+                />
+              <b>  Mobile </b>
               </div>
-              <div className="form-group">
-                <label>
-                  Expertise:
-                  <br />
-                  <input
-                    type="checkbox"
-                    name="expertise"
-                    value="Drugs"
-                    checked={formData.expertise.includes('Drugs')}
-                    onChange={handleCheckboxChange}
-                  />
-                  Drug
-                  <br/>
-                  <input
-                    type="checkbox"
-                    name="expertise"
-                    value="Porn"
-                    checked={formData.expertise.includes('Porn')}
-                    onChange={handleCheckboxChange}
-                  />
-                  Porn
-                  <br/>
-                  <input
-                    type="checkbox"
-                    name="expertise"
-                    value="Alcohol"
-                    checked={formData.expertise.includes('Alcohol')}
-                    onChange={handleCheckboxChange}
-                  />
-                  Alcohol
-                <br/>
-                  <input
-                    type="checkbox"
-                    name="expertise"
-                    value="Mobile"
-                    checked={formData.expertise.includes('Mobile')}
-                    onChange={handleCheckboxChange}
-                  />
-                  Mobile
-                </label>
-              </div>
-        
-              <Link to="/counselor/login" className="float-right mb-4">Login?</Link>
+              <Link to="/counselor/login" className="float-right mb-4">
+                Login?
+              </Link>
               <button className="btn btn-block py-3" type="submit">
                 Submit
               </button>
             </form>
-</div>
-</div>
-</div>
-
-</Fragment>
-);
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  );
 };
 
 export default Register;

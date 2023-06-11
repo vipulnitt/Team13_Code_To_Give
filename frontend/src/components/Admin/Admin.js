@@ -31,6 +31,7 @@ const Admin = () => {
   return (
     <div>
       <h1>Admin Panel</h1>
+      <br/> <br/>
       <div className='d-inline-flex'>
       <div className='ml-5'>
       <h6>Select Type of Addiction</h6>

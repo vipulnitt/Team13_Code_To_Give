@@ -44,7 +44,7 @@ const Login =()  => {
     <Fragment>
         {loading?<Loader/>:<Fragment>
         <MetaData title={'Counselor Login'}/>
-            <div className="container container-fluid">
+            <div className="container container-fluid" style={{marginLeft:"7%"}}>
         <div className="row wrapper"> 
 		<div className="col-10 col-lg-5">
         <form className="shadow-lg" onSubmit={submitHandler}>

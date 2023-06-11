@@ -57,7 +57,7 @@ const Header = () => {
                 onClick={handleLogoClick}
                 tabIndex={isScreenFullWidth ? -1 : undefined}
               >
-                <img src='images/logo.png' alt='DREAM' style={{ width: '100%' }} />
+                <img src='/images/logo.png' alt='DREAM' style={{ width: '100%' }} />
               </Link>
               <button
                 className='navbar-toggler'
@@ -107,7 +107,7 @@ const Header = () => {
 
                   {!admin && !counselor ? (
                     <li className={`nav-item dropdown mx-1`}>
-                      <a className='nav-link dropdown-toggle' href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
+                      <a className='nav-link dropdown-toggle' href='/' role='button' data-bs-toggle='dropdown' aria-expanded='false'>
                         <strong style={{ fontSize: '1.5rem' }}>Login</strong>
                       </a>
                       <ul className='dropdown-menu my-3' style={{ backgroundColor: '#DDE6ED' }}>
@@ -138,7 +138,7 @@ const Header = () => {
                             style={{ backgroundColor: '#27373D' }}
                           >
                             <figure className='avatar avatar-nav' style={{ backgroundColor: '#ffffff' }}>
-                              <img src='images/avatar.png' alt='abc' className='rounded-circle' />
+                              <img src='/images/avatar.png' alt='abc' className='rounded-circle' />
                             </figure>
                             <span>{admin ? admin.name : ''}</span>
                           </Link>
@@ -148,8 +148,8 @@ const Header = () => {
                             {<Link to='/admin/counselors'>Counselors</Link>}
                             {<Link to='/admin/pendingRequest'>Pending Request</Link>}
                             {<Link to='/admin/response'>Responses</Link>}
-                            {<Link to='/admin/response'>Responses</Link>}
-                            <Link to='/admin/volunteers' onClick={logoutHandler}>
+                            {<Link to='/admin/volunteers'>Vounteers</Link>}
+                            <Link  onClick={logoutHandler}>
                               Logout
                             </Link>
                           </div>
@@ -174,7 +174,7 @@ const Header = () => {
                             style={{ backgroundColor: '#27373D' }}
                           >
                             <figure className='avatar avatar-nav' style={{ backgroundColor: '#ffffff' }}>
-                              <img src='images/avatar.png' alt='abc' className='rounded-circle' />
+                              <img src='/images/avatar.png' alt='abc' className='rounded-circle' />
                             </figure>
                             <span>{counselor ? counselor.name : ''}</span>
                           </Link>

@@ -44,8 +44,8 @@ const PendingRequest = () => {
   return (
     <Fragment>
     <div className="mt-3" style={{ display: 'flex' }}>
-    <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100">
-  <div className="card bg-primary">
+    <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100" >
+  <div className="card bg-dark" style={{ display: 'flex', backgroundColor:"526D82" }}>
                     <div className="card-header cardHead cardbg1">
                         
                        <span className="text-white notification cardHeadText">
@@ -74,7 +74,7 @@ const PendingRequest = () => {
  
 </div>
 <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100">
-  <div className="card bg-primary">
+  <div className="card bg-dark"  style={{ backgroundColor:"526D82"}}>
                     <div className="card-header cardHead cardbg1">
                         
                        <span className="text-white notification cardHeadText">

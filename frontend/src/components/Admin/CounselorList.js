@@ -20,7 +20,7 @@ useEffect(()=>{
     {
         setList(counselorList.counselors);
         setCount(counselorList.count)
-        setResPerPage(counselorList.count)
+        setResPerPage(counselorList.resPerPage)
     }
 
 },[counselorList])
@@ -34,9 +34,10 @@ useEffect(()=>{
     
   return (
     <Fragment>
-        <div className="mt-3" style={{ display: 'flex' }}>
-    <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100">
-  <div className="card bg-primary">
+      <div className='d-flex justify-content-center align-items-center'>
+        <div className="mt-3 col-md-6" >
+    <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100 "  >
+  <div className="card bg-dark">
                     <div className="card-header cardHead cardbg1">
                         
                        <span className="text-white notification cardHeadText">
@@ -45,7 +46,7 @@ useEffect(()=>{
                         </span>
                     </div>
                     {list&&list.map((counselor)=>(
-                        <div className="card mb-0">
+                        <div className="card mb-0 ">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
                             <div className="linkcorner">
@@ -80,6 +81,7 @@ useEffect(()=>{
                      </div>
                   
 
+                    </div>
                     </div>
                     </div>
     </Fragment>

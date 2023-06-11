@@ -22,10 +22,7 @@ const Login =()  => {
       });
       navigate('/admin');
     }
-    if(error){
-      
-        if(error){
-          
+    if(error&&error!="Login first to access this resource."){
           Swal.fire({
             icon: 'error',
             title: 'OOPS!',
@@ -34,8 +31,7 @@ const Login =()  => {
             timer: 1500,
           });
             dispatch(clearErrors());
-        }
-        dispatch(clearErrors());
+
     }
 },[dispatch,isAuthenticated,error]);
  const submitHandler = (e) =>{
@@ -46,7 +42,7 @@ const Login =()  => {
     <Fragment>
         {loading?<Loader/>:<Fragment>
         <MetaData title={'Admin Login'}/>
-            <div className="container container-fluid">
+        <div className="container container-fluid" style={{marginLeft:"7%"}}>
         <div className="row wrapper"> 
 		<div className="col-10 col-lg-5">
         <form className="shadow-lg" onSubmit={submitHandler}>

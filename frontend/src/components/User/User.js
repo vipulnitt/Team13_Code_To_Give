@@ -120,8 +120,9 @@ const User = () => {
         
         <MetaData title={'Dream Beyond Drugs'}/>
 <br/>
-<div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100 ">
-  <div className="card bg-primary">
+<div className="d-flex justify-content-center align-items-center">
+<div className="col-md-6 h-100 ">
+  <div className="card bg-dark">
                     <div className="card-header cardHead cardbg1">
                         
                        <span className="text-white notification cardHeadText">
@@ -151,7 +152,7 @@ const User = () => {
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
                             <div className="linkcorner">
-                            <button onClick={handleNextQuestion}>Next</button>
+                            <button style={{ backgroundColor: "#fa9c23",color:"#000" }} onClick={handleNextQuestion}>Next</button>
                             </div>
                         </div>
                         </div>
@@ -177,7 +178,7 @@ const User = () => {
                                  <div className="card-header card-header-inner" data-toggle="collapse"
                                      data-parent="#accordion" href="#applicant_login">
                                      <div className="linkcorner">
-                                      <button onClick={handleNextQuestion}>Next</button>
+                                     <button style={{ backgroundColor: "#fa9c23" ,color:"#000"}} onClick={handleNextQuestion}>Next</button>
                                      </div>
                                  </div>
                                  </div>
@@ -187,6 +188,7 @@ const User = () => {
                        </Fragment>:<></>}
                        
                        
+                        </div>
                         </div>
                         </div>
     </Fragment>

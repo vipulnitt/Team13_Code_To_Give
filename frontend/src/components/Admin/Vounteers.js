@@ -50,7 +50,7 @@ const Volunteers = () => {
      <div>
        
      <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100">
-  <div className="card bg-primary">
+  <div className="card bg-dark">
                     <div className="card-header cardHead cardbg1">
                         
                        <span className="text-white notification cardHeadText">
@@ -105,7 +105,7 @@ const Volunteers = () => {
       <h1>Admin Panel</h1>
       <div className="mt-3" style={{ display: 'flex' }}>
     <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100">
-  <div className="card bg-primary">
+  <div className="card bg-dark">
                     <div className="card-header cardHead cardbg1">
                         
                        <span className="text-white notification cardHeadText">

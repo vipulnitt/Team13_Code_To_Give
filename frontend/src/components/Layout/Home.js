@@ -51,7 +51,7 @@ const Home = () => {
           <a href="https://t.me/codeToGive_bot" target="_blank" className="bt bt-color bt-animation-1" onMouseEnter={handleHover}
           onMouseLeave={handleHover}><img src="images/telegram.png" alt="" /> Telegram</a>        
 
-          <a href="/volunteer" className="bt bt-color bt-animation-1" ><img src="images/site.png" alt=""/> Volunteer</a>  
+          <a href="/volunteer" className="bt bt-color bt-animation-1" ><img src="/images/site.png" alt=""/> Volunteer</a>  
         </div>      
       </div>
       <div className='moto'>

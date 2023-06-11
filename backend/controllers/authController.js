@@ -142,7 +142,7 @@ exports.getCounselorById = catchAsyncError(async(req,res,next)=>{
 
 exports.getCounselorList = catchAsyncError(async(req,res,next)=>{
     const dataCount = await Counselor.countDocuments({approved:true});
-     const resPerPage=4;
+     const resPerPage=3;
 
    const apiFeatures = new APIFeatures(Counselor.find({approved:true}),req.query).search().filter().pagination(resPerPage);
  const counselors = await apiFeatures.query;

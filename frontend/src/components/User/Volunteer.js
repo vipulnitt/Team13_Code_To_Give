@@ -56,8 +56,9 @@ const Volunteer = () => {
     <Fragment>
       <MetaData title={'Dream Beyond Drugs'} />
       <br />
-      <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100 ">
-        <div className="card bg-primary">
+      <div className="d-flex justify-content-center align-items-center">
+<div className="col-md-6 h-100 ">
+  <div className="card bg-dark">
           <div className="card-header cardHead cardbg1">
             <span className="text-white notification cardHeadText">
               <i className="fa fa-user"></i>Details
@@ -157,12 +158,13 @@ const Volunteer = () => {
                 href="#applicant_login"
               >
                 <div className="linkcorner">
-                  <button type="submit">Submit</button>
+                  <button  style={{ backgroundColor: "#fa9c23" ,color:"#000"}} type="submit">Submit</button>
                 </div>
               </div>
             </div>
           </form>
         </div>
+      </div>
       </div>
     </Fragment>
   );
