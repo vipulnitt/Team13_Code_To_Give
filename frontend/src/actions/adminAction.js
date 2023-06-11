@@ -41,7 +41,10 @@ import {
     COUNSELORS_LIST_REQUEST,
     COUNSELORS_LIST_SUCCESS,
     COUNSELORS_LIST_FAIL,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    VOLUNTEER_DATA_REQUEST,
+    VOLUNTEER_DATA_SUCCESS,
+    VOLUNTEER_DATA_FAIL
 } from '../constants/adminConstant';
 
 export const  login = (email, password)=> async(dispatch)=>{
@@ -330,7 +333,7 @@ export const getAllSubmissions =(currentPage=1)=>async(dispatch)=>{
         dispatch({
             type: ALL_DATA_REQUEST
         })
-      
+   //   console.log("xyz"+keyword);
         const {data} = await axios.get(`/api/v1/allsubmissions?page=${currentPage}`);
         dispatch({
             type:ALL_DATA_SUCCESS,
@@ -390,6 +393,27 @@ export const getCounselorList =(currentPage=1)=>async(dispatch)=>{
         } catch(error){
             dispatch({
                 type:COUNSELORS_LIST_FAIL,
+                payload: error.response.data.message
+            })
+        }
+}
+
+export const getAllVolunteers =(currentPage=1)=>async(dispatch)=>{
+    try{
+        dispatch({
+            type: VOLUNTEER_DATA_REQUEST
+        })
+      
+        const {data} = await axios.get(`/api/v1/getvolunteer?page=${currentPage}`);
+        dispatch({
+            type:VOLUNTEER_DATA_SUCCESS,
+            payload: data
+            
+        })
+    
+        } catch(error){
+            dispatch({
+                type:VOLUNTEER_DATA_FAIL,
                 payload: error.response.data.message
             })
         }

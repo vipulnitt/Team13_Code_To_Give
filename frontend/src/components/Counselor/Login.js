@@ -22,11 +22,19 @@ const Login =()  => {
         timer: 1500,
       });
       navigate('/counselor');
-    }else if(error){
+
+    } if(error&&error!="Login first to access this resource."){
+        console.log(error)
+        Swal.fire({
+          icon: 'error',
+          title: 'OOPS!',
+          text: error,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+          dispatch(clearErrors());
       
-            dispatch(clearErrors());
-      
-    }
+  }
 },[dispatch,isAuthenticatedCounselor,error]);
  const submitHandler = (e) =>{
         e.preventDefault();
@@ -35,12 +43,12 @@ const Login =()  => {
   return (
     <Fragment>
         {loading?<Loader/>:<Fragment>
-        <MetaData title={'Login'}/>
+        <MetaData title={'Counselor Login'}/>
             <div className="container container-fluid">
         <div className="row wrapper"> 
 		<div className="col-10 col-lg-5">
         <form className="shadow-lg" onSubmit={submitHandler}>
-            <h1 className="mb-3">Login</h1>
+            <h1 className="mb-3">Counselor Login</h1>
             <div className="form-group">
               <label htmlFor="email_field">Email</label>
               <input

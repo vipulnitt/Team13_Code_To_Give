@@ -1,20 +1,20 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import BarGraph from '../Layout/BarGraph';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllSubmissions, getBarData, getPieData } from '../../actions/adminAction';
+import { getAllSubmissions, getAllVolunteers, getBarData, getPieData } from '../../actions/adminAction';
 import PieChart from '../Layout/PieChart';
 import Pagination from 'react-js-pagination';
 import { Link } from 'react-router-dom';
 
-const Response = () => {
+const Volunteers = () => {
   const [currentPage,setCurrentPage] = useState(1);
   const [currentData,setCurrentData] = useState("0");
   const [currentSelect,setCurrentSelect] = useState(null); 
   const dispatch = useDispatch();
    useEffect(()=>{
-    Promise.all([dispatch(getPieData()), dispatch(getBarData()),dispatch(getAllSubmissions())]);
+    Promise.all([dispatch(getAllSubmissions())]);
    },[]);
-   const { loading, all} = useSelector(state=> state.data)
+   const { loading, volunteerList} = useSelector(state=> state.data)
 
    const [count,setCount] =useState(0);
    const [data,setData] =useState(null);
@@ -22,15 +22,15 @@ const Response = () => {
  
   
    useEffect(()=>{
-        if(all)
+        if(volunteerList)
         {
-           setResPerPage(all.resPerPage);
-           setCount(all.count);
-           setData(all.data);
+           setResPerPage(volunteerList.resPerPage);
+           setCount(volunteerList.count);
+           setData(volunteerList.data);
         }
-   },[all])
+   },[volunteerList])
    useEffect(()=>{
-      dispatch(getAllSubmissions(currentPage));
+      dispatch(getAllVolunteers(currentPage));
   },[dispatch,currentPage]);
  
   function setCurrentPageNo(pageNumber){
@@ -77,31 +77,9 @@ const Response = () => {
                             </div>
                         </div>
                         </div>
-                        <div className="card mb-0">
-                        <div className="card-header card-header-inner" data-toggle="collapse"
-                            data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
-                            <b>Counseling Needed(System Test):</b> {currentSelect&&(currentSelect?<>Yes</>:<>No</>)} 
-                            </div>
-                        </div>
-                        </div>
-                        {currentSelect&&currentSelect.mobileNumber?(<div className="card mb-0">
-                        <div className="card-header card-header-inner" data-toggle="collapse"
-                            data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
-                            <b>Mobile Number:</b> {currentSelect&&currentSelect.mobileNumber}
-                            </div>
-                        </div>
-                        </div>):(<></>)}
+                       
 
-                        <div className="card mb-0">
-                        <div className="card-header card-header-inner" data-toggle="collapse"
-                            data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
-                            <b>Counselor:</b> {currentSelect&&currentSelect.counselorDetails.isAssigned?(<> <b>Name:</b> <Link to={'/admin/counselor?id='+currentSelect.counselorDetails.counselorId}>{currentSelect&&currentSelect.counselorDetails.counselorName} </Link></>):(<b Style="color:Red;">Not Assigned</b>)}
-                            </div>
-                        </div>
-                        </div>
+                        
                    
                     {currentSelect?(currentSelect.questions.map((c)=>(
                   
@@ -140,7 +118,7 @@ const Response = () => {
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
                             <div className="linkcorner">
-                              <b>Contact Details: </b>{c.email}  <b className='ml-2'>Addiction Type:</b> {c.addictionType}  <b className='ml-2'>Status:</b>{c.counselorDetails.isAssigned?(<>{c.counselorDetails.status==="underProcess"?(<b Style="color:MediumSeaGreen;">Assigned</b>):(<b Style="color:Tomato;">Closed</b>)}</>):(<b Style="color:Red;">Not Assigned</b>)} <Link className='ml-2'onClick={()=>handlePage(c)}>View Details</Link>
+                              <b>Contact Details: </b>{c.email}  <b className='ml-2'>Addiction Type:</b> {c.addictionType}   <Link className='ml-2'onClick={()=>handlePage(c)}>View Details</Link>
                               
                             </div>
                         </div>
@@ -176,4 +154,4 @@ const Response = () => {
   );
 };
 
-export default Response;
+export default Volunteers;

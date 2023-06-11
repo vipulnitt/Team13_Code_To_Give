@@ -3,6 +3,7 @@ const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError= require('../middleware/catchAsyncError');
 const sendToken = require('../utils/jwtTokenCounselor');
 const Data = require('../models/data');
+const APIFeatures = require('../utils/apiFeatures');
 exports.registerConselor = catchAsyncError(async (req, res, next)=>{
     const {name, email, password,expertise,experience,mobileNumber} = req.body;
      const approved=false;
@@ -83,30 +84,33 @@ exports.updateCounselorPassword = catchAsyncError(async(req,res,next)=>{
 
 });
 
-exports.counselingRequest = catchAsyncError(async(req,res,next)=>{
-  const counselor= await Counselor.findById(req.counselor.id);
+exports.counselingRequest = catchAsyncError(async (req, res, next) => {
+  const counselor = await Counselor.findById(req.counselor.id);
   const expertise = counselor.expertise;
-  const response = [];
-  for(let i=0;i<expertise.length;i++)
-  {
-    const result = await Data.find({addictionType:expertise[i]});
-    for(let j=0;j<result.length;j++)
-    {
-      
-      if(result[j].counselorDetails.isAssigned==true)
-      {
-        continue;
-      }
-      response.push(result[j]);
-    }
-  }
- 
- 
+
+  const data = await Data.find({
+    addictionType: { $in: expertise },
+    'counselorDetails.isAssigned': false,
+    email: { $ne: 'NotProvided' },
+  });
+  const dataCount = await data.length;
+
+ const resPerPage=6;
+ const apiFeatures = new APIFeatures(Data.find({
+  addictionType: { $in: expertise },
+  'counselorDetails.isAssigned': false,
+  email: { $ne: 'NotProvided' },
+   }),req.query).search().filter().pagination(resPerPage);
+   const response = await apiFeatures.query;
+    
   res.status(200).json({
-    success:true,
-    response:response
-})
+    success: true,
+    count: dataCount,
+        resPerPage,
+    response: response
+  });
 });
+
 exports.acceptCounseling  = catchAsyncError(async(req,res,next)=>{
 
   const id= req.body.id;
@@ -122,21 +126,11 @@ exports.acceptCounseling  = catchAsyncError(async(req,res,next)=>{
 
   const counselor= await Counselor.findById(req.counselor.id);
   const expertise = counselor.expertise;
-  const response = [];
-  for(let i=0;i<expertise.length;i++)
-  {
-    const result = await Data.find({addictionType:expertise[i]});
-    for(let j=0;j<result.length;j++)
-    {
-      
-      if(result[j].counselorDetails.isAssigned==true)
-      {
-        continue;
-      }
-      response.push(result[j]);
-    }
-  }
- 
+  const response = await Data.find({
+    addictionType: { $in: expertise },
+    'counselorDetails.isAssigned': false,
+    email: { $ne: 'NotProvided' },
+  });
  
   res.status(200).json({
     success:true,
@@ -146,16 +140,11 @@ exports.acceptCounseling  = catchAsyncError(async(req,res,next)=>{
 
 exports.underProcess = catchAsyncError(async(req,res,next)=>{
   const id= req.counselor.id;
-  const response = [];
+  const response = await Data.find({
+    'counselorDetails.counselorId': id,
+    'counselorDetails.status': 'underProcess',
+  });
 
-    const result = await Data.find({'counselorDetails.counselorId':id});
-    for(let j=0;j<result.length;j++)
-    {
-      if(result[j].counselorDetails.status==="underProcess")
-      response.push(result[j]);
-    }
- 
- 
   res.status(200).json({
     success:true,
     response:response
@@ -164,7 +153,7 @@ exports.underProcess = catchAsyncError(async(req,res,next)=>{
 
 exports.finishedCounseling  = catchAsyncError(async(req,res,next)=>{
   const id= req.body.id;
-  console.log(""+JSON.stringify(req.body));
+
   var mongoose = require('mongoose');
   var o_id =new mongoose.Types.ObjectId(id);
   const result = await Data.findByIdAndUpdate({_id:o_id});

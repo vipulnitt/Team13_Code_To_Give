@@ -24,6 +24,9 @@ import { CounselorProfile } from "./components/Admin/CounselorProfile";
 import CounselorList from "./components/Admin/CounselorList";
 import Response from "./components/Admin/Response";
 import Articles from "./components/Layout/Articles";
+import Volunteer from "./components/User/Volunteer";
+import Volunteers from "./components/Admin/Vounteers";
+import MyProfile from "./components/Counselor/MyProfile";
 const App = () => {
   const {isAuthenticated} = useSelector(state=> state.auth);
  const {isAuthenticatedCounselor} = useSelector(state=>state.Counselor);
@@ -62,14 +65,25 @@ const App = () => {
       <Route path='/faqs'Component={Faqs}/>
       <Route path='/admin/login' Component={Login}/>
       <Route path='/user' Component={User}/>
+      <Route path='/volunteer' Component={Volunteer}/>
       <Route path='/admin' element={
       <ProtectedRoute isLoggedIn={isAuthenticated}>
         <Admin/>
       </ProtectedRoute>
     } exact/>
-        <Route path='/admin/pendingrequest' element={
+    <Route path='/admin' element={
+      <ProtectedRoute isLoggedIn={isAuthenticated}>
+        <Admin/>
+      </ProtectedRoute>
+    } exact/>
+    <Route path='/admin/pendingrequest' element={
       <ProtectedRoute isLoggedIn={isAuthenticated}>
         <PendingRequest/>
+      </ProtectedRoute>
+    } exact/>
+        <Route path='/admin/volunteers' element={
+      <ProtectedRoute isLoggedIn={isAuthenticated}>
+        <Volunteers/>
       </ProtectedRoute>
     } exact/>
      <Route path='/admin/counselor' element={
@@ -94,6 +108,12 @@ const App = () => {
       <Counselor/>
       </ProtectedRoute>
     } exact/>
+   <Route path='/counselor/myprofile' element={
+      <ProtectedRoute isLoggedIn={isAuthenticatedCounselor}>
+      <MyProfile/>
+      </ProtectedRoute>
+    } exact/>
+
     <Route path='/counselor/underprocess' element={
       <ProtectedRoute isLoggedIn={isAuthenticatedCounselor}>
       <UnderProcess/>

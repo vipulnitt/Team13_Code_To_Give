@@ -5,6 +5,7 @@ const sendToken = require('../utils/jwtToken');
 const Counselor = require('../models/counselor');
 const Data = require('../models/data');
 const APIFeatures = require('../utils/apiFeatures');
+const Volunteer = require('../models/volunteerModel');
 exports.registerAdmin = catchAsyncError(async (req, res, next)=>{
     const {name, email, password} = req.body;
 
@@ -45,7 +46,6 @@ exports.loginAdmin = catchAsyncError(async (req, res, next)=>{
 //get Current Admin Profile
 
 exports.getAdminProfile = catchAsyncError(async (req,res,next)=>{
-    console.log(JSON.stringify(req.body)+"");
     const admin = await Admin.findById(req.admin.id);
     res.status(200).json({
       success:true,
@@ -117,7 +117,7 @@ exports.acceptCounselorRequest= catchAsyncError(async(req,res,next)=>{
 exports.getAllSubmissions = catchAsyncError(async(req,res,next)=>{
 
 const dataCount = await Data.countDocuments();
-const resPerPage=4;
+const resPerPage=6;
  const apiFeatures = new APIFeatures(Data.find(),req.query).search().filter().pagination(resPerPage);
  const data = await apiFeatures.query;
     res.status(200).json({
@@ -153,3 +153,26 @@ exports.getCounselorList = catchAsyncError(async(req,res,next)=>{
         counselors
     });
     })
+
+    exports.allVounteer  = catchAsyncError(async (req, res, next)=>{
+        const dataCount = await Volunteer.countDocuments();
+        const resPerPage=4;
+   
+        const apiFeatures = new APIFeatures(Volunteer.find(),req.query).search().filter().pagination(resPerPage);
+        const data = await apiFeatures.query;
+           res.status(200).json({
+               success:true,
+               resPerPage,
+               count:dataCount,
+               data
+           });
+    });
+
+exports.deleteVounteer  = catchAsyncError(async (req, res, next)=>{
+
+        const data= await Volunteer.findOneAndDelete({_id:req.body.id});
+        res.status(200).json({
+         success: true,
+         data
+       });
+    });

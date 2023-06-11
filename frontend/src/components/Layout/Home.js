@@ -37,8 +37,7 @@ const Home = () => {
     <Fragment>
       <div className="home">
       
-      <MetaData title={'Team13_Code_To_Give'}/>
-      <MetaData/>
+      <MetaData title={'Dream Beyond Drugs'}/>
       <div className='gifContainer'>
         <img src="images/giphy.gif" className='gif' />         
         {isHovered && (
@@ -50,7 +49,9 @@ const Home = () => {
           <h3 style={{fontSize:'2.5rem'}}><strong >Lets Communicate Over...</strong></h3>     
           <a href="/user" className="bt bt-color bt-animation-1" ><img src="images/site.png" alt=""/> Site</a> 
           <a href="https://t.me/codeToGive_bot" target="_blank" className="bt bt-color bt-animation-1" onMouseEnter={handleHover}
-          onMouseLeave={handleHover}><img src="images/telegram.png" alt="" /> Telegram</a>         
+          onMouseLeave={handleHover}><img src="images/telegram.png" alt="" /> Telegram</a>        
+
+          <a href="/volunteer" className="bt bt-color bt-animation-1" ><img src="images/site.png" alt=""/> Volunteer</a>  
         </div>      
       </div>
       <div className='moto'>

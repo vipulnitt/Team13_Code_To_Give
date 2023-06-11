@@ -28,7 +28,10 @@ const questionSchema = new mongoose.Schema({
   },
   parentId: {
     type: String
-  },
+  },createAt:{
+    type: Date,
+    default: Date.now
+}
 });
 
 const Questions = mongoose.model("Questions", questionSchema);

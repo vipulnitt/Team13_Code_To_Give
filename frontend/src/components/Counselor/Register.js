@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { counselorRegister } from '../../actions/counselorAction';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import MetaData from '../Layout/MetaData';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -37,17 +38,21 @@ const Register = () => {
       }
     });
   };
+  const navigate = useNavigate();
  const dispatch= useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     const jsonFormat = JSON.stringify(formData);
     console.log(jsonFormat);
     dispatch(counselorRegister(formData));
+    navigate('/');
     
   };
 
   return (
     <Fragment>
+      
+      <MetaData title={'Counselor Register'}/>
         <div className="container container-fluid">
         <div className="row wrapper">
           <div className="col-10 col-lg-5">
@@ -125,8 +130,8 @@ const Register = () => {
                   <input
                     type="checkbox"
                     name="expertise"
-                    value="Drug"
-                    checked={formData.expertise.includes('drug')}
+                    value="Drugs"
+                    checked={formData.expertise.includes('Drugs')}
                     onChange={handleCheckboxChange}
                   />
                   Drug
@@ -135,10 +140,28 @@ const Register = () => {
                     type="checkbox"
                     name="expertise"
                     value="Porn"
-                    checked={formData.expertise.includes('porn')}
+                    checked={formData.expertise.includes('Porn')}
                     onChange={handleCheckboxChange}
                   />
                   Porn
+                  <br/>
+                  <input
+                    type="checkbox"
+                    name="expertise"
+                    value="Alcohol"
+                    checked={formData.expertise.includes('Alcohol')}
+                    onChange={handleCheckboxChange}
+                  />
+                  Alcohol
+                <br/>
+                  <input
+                    type="checkbox"
+                    name="expertise"
+                    value="Mobile"
+                    checked={formData.expertise.includes('Mobile')}
+                    onChange={handleCheckboxChange}
+                  />
+                  Mobile
                 </label>
               </div>
         

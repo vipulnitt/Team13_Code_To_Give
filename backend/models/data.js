@@ -48,7 +48,11 @@ const dataSchema = new mongoose.Schema({
       default:"Not mentioned"
     }
 
-  }
+  },
+  createAt:{
+    type: Date,
+    default: Date.now
+}
 });
 
 module.exports = mongoose.model('Data', dataSchema);

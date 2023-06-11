@@ -1,7 +1,8 @@
-const ErrorHandler = require('../utils/errorHandler');
+
 const catchAsyncError= require('../middleware/catchAsyncError');
 const Data = require('../models/data');
 const Questions = require("../models/questionModel");
+const Volunteer = require("../models/volunteerModel");
 
 exports.saveData =catchAsyncError(async (req, res, next)=>{
      const {data} = Data.create(req.body);
@@ -46,7 +47,6 @@ exports.saveData =catchAsyncError(async (req, res, next)=>{
           success: true,
           results
         });
-        console.log(results);
       })
       .catch(error => {
         res.status(200).json({
@@ -57,7 +57,7 @@ exports.saveData =catchAsyncError(async (req, res, next)=>{
   });
   
   exports.addictionType = catchAsyncError(async (req, res, next)=>{
-    Data.aggregate([
+    await Data.aggregate([
         {
           $group: {
             _id: "$addictionType",
@@ -77,4 +77,12 @@ exports.saveData =catchAsyncError(async (req, res, next)=>{
                 error:error
               });
         });
+ });
+
+ exports.addVounteer  = catchAsyncError(async (req, res, next)=>{
+     const data= await Volunteer.create(req.body);
+     res.status(200).json({
+      success: true,
+      data
+    });
  });

@@ -10,16 +10,17 @@ const sessionStore = {};
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   const userId = msg.from.id;
- 
+  console.log(userId);
   if (!sessionStore[userId]||msg.text==='/restart') {
     const session = {
       userId: userId,
       sessionId: generateSessionId(),
-      currentQuestionId: "BASE0",
+      currentQuestionId: "0BASE0",
       questionObj: null,
       data:[],
       stage: "0"
     };
+    console.log(msg);
     sessionStore[userId] = session;
     bot.sendMessage(chatId, 'Welcome! Your well-being is our top priority, and we assure you that your data will be secure. Our dedicated professionals are here to support you on your journey to recovery. Let us know how we can assist you in overcoming addiction and living a healthier life \n/start');
   } else {
@@ -36,10 +37,14 @@ bot.on('message', async (msg) => {
                  {
                   
                   const len=sessionStore[userId].questionObj.options.length;
-                  if(len===0)
+                  if(len>0)
+                  {
+                    bot.sendMessage(chatId,"Please select the options. /restart")
+                  }
+                  else if(len===0)
                   {
                        
-                      sessionStore[userId].currentQuestionId=sessionStore[userId].questionObj.isText.childId;
+                      sessionStore[userId].currentQuestionId="0"+sessionStore[userId].questionObj.isText.childId;
                       const ans={
                           q_id:sessionStore[userId].questionObj.questionId,
                           statement:sessionStore[userId].questionObj.statement,
@@ -105,8 +110,8 @@ function generateSessionId() {
 const handleQuestion= async(userId,chatId)=>{
 
     try {
-
-      sessionStore[userId].questionObj = await Questions.findOne({ questionId: sessionStore[userId].currentQuestionId });
+    
+      sessionStore[userId].questionObj = await Questions.findOne({ questionId: sessionStore[userId].currentQuestionId.substring(1) });
 
       const question = sessionStore[userId].questionObj.statement;
       const len = sessionStore[userId].questionObj.options.length;
@@ -120,7 +125,7 @@ const handleQuestion= async(userId,chatId)=>{
         options.forEach((option, index) => {
           const button = {
             text: option.option,
-            callback_data: option.childId
+            callback_data: index+option.childId
           };
         
           inline_keyboard.push([button]);
@@ -135,7 +140,7 @@ const handleQuestion= async(userId,chatId)=>{
         const message = `${question}\n`;
         bot.sendMessage(chatId, message,updatedReplyMarkup);
       } else {
-        const message = `Question: ${question}`;
+        const message = `${question}`;
         bot.sendMessage(chatId, message);
       }
     } catch (error) {
@@ -158,6 +163,7 @@ function isValidEmail(email) {
     const action = callbackQuery.data;
     const message= callbackQuery.message;
     var ans=null;
+    console.log(action+" "+JSON.stringify(message));
     for (const row of message.reply_markup.inline_keyboard) {
       for (const button of row) {
         if (button.callback_data === action) {
@@ -170,12 +176,12 @@ function isValidEmail(email) {
       }
     }
 
-    if(sessionStore[userId].currentQuestionId==="Counseling"||sessionStore[userId].currentQuestionId==="NoCounseling")
+    if(sessionStore[userId].currentQuestionId.substring(1)==="COU01")
     {
-      if(action==="booked")
+      if(action.substring(1)==="booked")
       {
         sessionStore[userId].stage="1";
-        bot.sendMessage(chatId, 'Please Share your email or mobile number!');
+        bot.sendMessage(chatId, 'Please Share your contact Details! (Email or Mobile No.)');
           sessionStore[userId].stage="3";
       }else
       {
@@ -195,11 +201,13 @@ function isValidEmail(email) {
       
     } else
     {
+    
       const temp={
         q_id:sessionStore[userId].questionObj.questionId,
         statement:message.text,
         ans:ans
     };
+    console.log(ans);
 
     const foundObject = sessionStore[userId].data.find(obj => obj.statement === temp.statement);
     if(!foundObject)

@@ -42,7 +42,10 @@ import {
     COUNSELORS_LIST_REQUEST,
     COUNSELORS_LIST_SUCCESS,
     COUNSELORS_LIST_FAIL,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    VOLUNTEER_DATA_REQUEST,
+    VOLUNTEER_DATA_FAIL,
+    VOLUNTEER_DATA_SUCCESS
 } from '../constants/adminConstant';
 
 export const authReducer = (state ={admin:{}},action)=>{
@@ -209,6 +212,7 @@ export const CounselorReducer = (state ={counselors:{}},action)=>{
 export const graphReducer= (state ={pie:{},bar:{}},action)=>{
 
     switch(action.type){
+
         case BAR_DATA_REQUEST:
         case PIE_DATA_REQUEST:
             return{
@@ -244,10 +248,11 @@ export const graphReducer= (state ={pie:{},bar:{}},action)=>{
     }
 
 }
-export const Data= (state ={all:{},selectedCounselor:{},counselorList:{}},action)=>{
+export const Data= (state ={all:{},selectedCounselor:{},counselorList:{}, volunteerList:{}},action)=>{
 
     switch(action.type){
         case ALL_DATA_REQUEST:
+        case VOLUNTEER_DATA_REQUEST:
         case COUNSELOR_DATA_REQUEST:
         case COUNSELORS_LIST_REQUEST:
             return{
@@ -272,7 +277,14 @@ export const Data= (state ={all:{},selectedCounselor:{},counselorList:{}},action
                 loading:false,
                 counselorList: action.payload
             }
+        case VOLUNTEER_DATA_SUCCESS:
+            return {
+                ...state,
+                loading:false,
+                volunteerList: action.payload
+            }
         case ALL_DATA_FAIL:
+        case VOLUNTEER_DATA_FAIL:
         case COUNSELOR_DATA_FAIL:
         case COUNSELORS_LIST_FAIL:
             return{
@@ -280,6 +292,8 @@ export const Data= (state ={all:{},selectedCounselor:{},counselorList:{}},action
                 loading:false,
                 error:action.payload
             }
+        
+  
             case CLEAR_ERRORS:
                 return {
                     ...state,

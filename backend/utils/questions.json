@@ -16,28 +16,54 @@
     {
         "questionId":"BASE2",
         "statement":"What is your type of Addiction?",
-        "options":[{"option":"Drugs","childId":"DRUG1"},{"option":"Mobile","childId":"MOBO1"},{"option":"Smoking","childId":"SMO1"},{"option":"Porn","childId":"PORN1"}],
+        "options":[{"option":"Drugs","childId":"DRUG0"},{"option":"Mobile","childId":"MOBO1"},{"option":"Smoking","childId":"SMO1"},{"option":"Porn","childId":"PORN1"}],
         "parentId":"BASE1"
     },
    {
   "questionId": "Counseling",
-  "statement": "Do You want to book appointment for Counseling?",
-
-   "parentId": "null",
-   "options": [
-    {
-      "option": "Yes",
-      "childId": "booked"
-    },
-    {
-      "option": "No",
-      "childId": "notBooked"
-    }
+  "statement": "Do you want to share your College or area Details?",
+  
+     "parentId": "null",
+     "options": [
+      {
+        "option": "Yes",
+        "childId": "AR0"
+      },
+      {
+        "option": "No",
+        "childId": "COU01"
+      }
   ]
   
 },
 {
   "questionId": "NoCounseling",
+    "statement": "Do you want to share your College or area Details?",
+  
+     "parentId": "null",
+     "options": [
+      {
+        "option": "Yes",
+        "childId": "AR0"
+      },
+      {
+        "option": "No",
+        "childId": "COU01"
+      }
+    ]
+    
+  },
+  {
+    "questionId":"AR0",
+        "statement":"Enter the details (College Name or Area )",
+         "isText":{
+            "childId":"COU01"
+         },
+        "parentId":null
+  }
+,
+{
+  "questionId": "COU01",
   "statement": "Do You want to book appointment for Counseling?",
 
    "parentId": "null",
@@ -55,199 +81,142 @@
 },
 {
   "questionId": "booked",
-  "statement": "Enter your mail or mobile number?",
+  "statement": "Enter your contact Details (email/mobilenumber)?",
     "parentId": "null",
    "isText":{
     "childId":"completed"
  }
 },
- 
-
-
-
-
   {
-    "questionId": "DRUG1",
-    "statement": "Do you use drugs on a regular basis?",
+    "questionId": "DRUG0",
+    "statement": "What type of drugs are you addicted to?",
     "options": [
       {
-        "option": "Daily",
-        "childId": "DRUG2"
+        "option": "Stimulants (e.g., cocaine, amphetamines)",
+        "childId": "DRUG1"
       },
       {
-        "option": "Occasionally",
-        "childId": "DRUG3"
+        "option": "Depressants (e.g., alcohol, benzodiazepines)",
+        "childId": "DRUG1"
       },
       {
-        "option": "Never",
-        "childId": "NoCounseling"
+        "option": "Hallucinogens (e.g., LSD, psilocybin)",
+        "childId": "DRUG1"
+      },
+      {
+        "option": "Opioids (e.g., heroin, prescription painkillers)",
+        "childId": "DRUG1"
+      },
+      {
+        "option": "Other",
+        "childId": "DRUG1"
       }
     ],
     "parentId": "BASE0"
   },
   {
-    "questionId": "DRUG2",
-    "statement": "Do you feel a strong need or craving to use drugs?",
+    "questionId": "DRUG1",
+    "statement": "Do you use drugs on a regular basis?",
     "options": [
       {
-        "option": "Yes",
-        "childId": "DRUG4"
+        "option": "Yes, I use drugs regularly",
+        "childId": "DRUG2"
       },
       {
-        "option": "No",
-        "childId": "Counseling"
+        "option": "No, I don't use drugs regularly",
+        "childId": "NoCounseling"
       }
     ],
-    "parentId": "DRUG1"
+    "parentId": "DRUG0"
   },
   {
-    "questionId": "DRUG3",
-    "statement": "What type of drugs do you use occasionally?",
+    "questionId": "DRUG2",
+    "statement": "On a scale of 1 to 5, how strong is your craving to use drugs?",
     "options": [
       {
-        "option": "Stimulants (e.g., cocaine, amphetamines)",
-        "childId": "DRUG5"
-      },
-      {
-        "option": "Depressants (e.g., alcohol, benzodiazepines)",
-        "childId": "DRUG6"
-      },
-      {
-        "option": "Hallucinogens (e.g., LSD, psilocybin)",
+        "option": "1 - Very weak",
         "childId": "DRUG7"
       },
       {
-        "option": "Opioids (e.g., heroin, prescription painkillers)",
-        "childId": "DRUG8"
+        "option": "2 - Weak",
+        "childId": "DRUG7"
       },
       {
-        "option": "Other",
-        "childId": "DRUG9"
+        "option": "3 - Moderate",
+        "childId": "DRUG7"
+      },
+      {
+        "option": "4 - Strong",
+        "childId": "DRUG3"
+      },
+      {
+        "option": "5 - Very strong",
+        "childId": "DRUG3"
       }
     ],
     "parentId": "DRUG1"
   },
   {
-    "questionId": "DRUG4",
-    "statement": "Have you tried to quit or reduce drug use but failed?",
+    "questionId": "DRUG7",
+    "statement": "Are you concerned about the negative impact of your drug use on your personal or professional life?",
     "options": [
       {
-        "option": "Yes",
-        "childId": "Counseling"
+        "option": "Yes, I am concerned about the negative impact",
+        "childId": "DRUG3"
       },
       {
-        "option": "No",
-        "childId": "NoCounseling"
+        "option": "No, I am not concerned about the negative impact",
+        "childId": "Counseling"
       }
     ],
     "parentId": "DRUG2"
   },
   {
-    "questionId": "DRUG5",
-    "statement": "Do you experience negative consequences due to stimulant drug use?",
+    "questionId": "DRUG3",
+    "statement": "Are you actively trying to quit or reduce your drug use?",
     "options": [
       {
-        "option": "Yes",
-        "childId": "DRUG10"
+        "option": "Yes, I'm actively trying to quit or reduce my drug use",
+        "childId": "DRUG4"
       },
       {
-        "option": "No",
-        "childId": "DRUG11"
+        "option": "No, I'm not currently trying to quit or reduce my drug use",
+        "childId": "Counseling"
       }
     ],
-    "parentId": "DRUG3"
+    "parentId": "DRUG2"
   },
   {
-    "questionId": "DRUG6",
-    "statement": "Do you experience negative consequences due to depressant drug use?",
-    "options": [
-      {
-        "option": "Yes",
-        "childId": "DRUG10"
-      },
-      {
-        "option": "No",
-        "childId": "DRUG11"
-      }
-    ],
-    "parentId": "DRUG3"
-  },
-  {
-    "questionId": "DRUG7",
-    "statement": "Do you experience negative consequences due to hallucinogen drug use?",
-    "options": [
-      {
-        "option": "Yes",
-        "childId": "DRUG10"
-      },
-      {
-        "option": "No",
-        "childId": "DRUG11"
-      }
-    ],
-    "parentId": "DRUG3"
-  },
-  {
-    "questionId": "DRUG8",
-    "statement": "Do you experience negative consequences due to opioid drug use?",
-    "options": [
-      {
-        "option": "Yes",
-        "childId": "DRUG10"
-      },
-      {
-        "option": "No",
-        "childId": "DRUG11"
-      }
-    ],
-    "parentId": "DRUG3"
-  },
-  {
-    "questionId": "DRUG9",
-    "statement": "Do you experience negative consequences due to other drug use?",
-    "options": [
-      {
-        "option": "Yes",
-        "childId": "DRUG10"
-      },
-      {
-        "option": "No",
-        "childId": "DRUG11"
-      }
-    ],
-    "parentId": "DRUG3"
-  },
-  {
-    "questionId": "DRUG10",
+    "questionId": "DRUG4",
     "statement": "Have you sought professional help or counseling for your drug use?",
     "options": [
       {
-        "option": "Yes",
-        "childId": "Counseling"
+        "option": "Yes, I have sought professional help or counseling",
+        "childId": "DRUG5"
       },
       {
-        "option": "No",
-        "childId": "NoCounseling"
+        "option": "No, I have not sought professional help or counseling",
+        "childId": "DRUG5"
       }
     ],
-    "parentId": "DRUG5"
+    "parentId": "DRUG3"
   },
   {
-    "questionId": "DRUG11",
-    "statement": "Are you concerned about the negative impact of your drug use on your personal or professional life?",
+    "questionId": "DRUG5",
+    "statement": "Have you been able to successfully overcome your drug addiction?",
     "options": [
       {
-        "option": "Yes",
-        "childId": "Counseling"
+        "option": "Yes, I have successfully overcome my drug addiction",
+        "childId": "NoCounseling"
       },
       {
-        "option": "No",
-        "childId": "NoCounseling"
+        "option": "No, I have not been able to overcome my drug addiction",
+        "childId": "Counseling"
       }
     ],
-    "parentId": "DRUG5"
-  },
-
+    "parentId": "DRUG4"
+  }
+,
 
 
 

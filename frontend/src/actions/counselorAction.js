@@ -169,15 +169,15 @@ export const counselorLogin = (email, password) => async (dispatch) => {
     }
   };
 
- export const counselingRequests= () => async (dispatch) =>{
+ export const counselingRequests= (currentPage=1) => async (dispatch) =>{
   try {
     dispatch({
       type: COUNSELING_REQUEST,
     });
-    const { data } = await axios.get('/api/v1/counselor/counselingrequest');
+    const { data } = await axios.get('/api/v1/counselor/counselingrequest?page='+currentPage);
     dispatch({
       type: COUNSELING_SUCCESS,
-      payload: data.response
+      payload: data
     });
   } catch (error) {
     dispatch({
@@ -275,3 +275,5 @@ export const counselorLogin = (email, password) => async (dispatch) => {
     });
   }
  }
+
+ 

@@ -102,7 +102,7 @@ const PendingRequest = () => {
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
                             <div className="linkcorner">
-                            <b>Expertise Domain:</b> {currentCounselor&&currentCounselor.expertise}
+                            <b>Expertise Domain:</b> {currentCounselor&&currentCounselor.expertise.join(', ')}
                             </div>
                         </div>
                         </div>

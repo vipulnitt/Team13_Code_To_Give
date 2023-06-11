@@ -28,3 +28,27 @@ export const  submitData = (res)=> async(dispatch)=>{
         })
     }
 }
+
+export const  submitVolunteerData = (res)=> async(dispatch)=>{
+    try{
+    dispatch({
+        type: SUBMISSION_REQUEST
+    })
+    const config = {
+        headers:{
+            'content-type': 'application/json'
+        }
+    }
+    const {data} = await axios.post('/api/v1/volunteer/savedata',res,config);
+    dispatch({
+        type: SUBMISSION_SUCCESS,
+        payload: data
+    })
+
+    } catch(error){
+        dispatch({
+            type:SUBMISSION_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}

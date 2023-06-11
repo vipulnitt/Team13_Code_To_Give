@@ -4,6 +4,7 @@ import { getQuestion } from '../../actions/questionAction';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { submitData } from '../../actions/acceptDataAction';
+import MetaData from '../Layout/MetaData';
 
 const User = () => {
     const dispatch = useDispatch();
@@ -116,6 +117,8 @@ const User = () => {
   
   return (
     <Fragment>
+        
+        <MetaData title={'Dream Beyond Drugs'}/>
 <br/>
 <div className="col-xl col-lg-3 col-md-6 col-sm-6 mb-3 h-100 ">
   <div className="card bg-primary">

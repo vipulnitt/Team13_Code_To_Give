@@ -5,10 +5,11 @@ import {  getBarData, getPieData } from '../../actions/adminAction';
 import PieChart from '../Layout/PieChart';
 
 const Admin = () => {
-  const [selectedId, setSelectedId] = useState('Drug');
+  const [selectedId, setSelectedId] = useState('');
   const dispatch = useDispatch();
    useEffect(()=>{
     Promise.all([dispatch(getPieData()), dispatch(getBarData())]);
+    setSelectedId('Drugs');
    },[]);
    const [pieChartData,setPieChartData] = useState(null);
    const [barGraphData,setBarGraphData] = useState(null);
@@ -17,7 +18,6 @@ const Admin = () => {
    useEffect(()=>{
    setPieChartData(pie);
    setBarGraphData(bar);
-   setSelectedId('Porn');
   },[pie,bar])
 
  
