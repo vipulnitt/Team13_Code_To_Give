@@ -16,7 +16,7 @@ const MyProfile = () => {
         <h1>My Profile</h1>
           <div className="container mt-5">
       <div className="card">
-        <div className="card-body">
+        <div className="card-body linkcorner text-left ml-4">
             {user?(<> <h2 className="card-title">Counselor Profile</h2>
           <p className="card-text"><b>Name:</b> {user.name}</p>
           <p className="card-text"><b>Email: </b>{user.email}</p>

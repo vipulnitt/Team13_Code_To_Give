@@ -49,7 +49,7 @@ useEffect(()=>{
                         <div className="card mb-0 ">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <p><b>Name:</b> {counselor.name}</p>
                          <p><b>Email: </b>{counselor.email}</p>
                          <p><b>Expertise:</b> {counselor.expertise.join(', ')}</p>

@@ -69,7 +69,7 @@ useEffect(()=>{
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Email:</b> {currentSelect&&currentSelect.email}
                             </div>
                         </div>
@@ -77,7 +77,7 @@ useEffect(()=>{
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Addiction Type:</b> {currentSelect&&currentSelect.addictionType}
                             </div>
                         </div>
@@ -85,7 +85,7 @@ useEffect(()=>{
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Counseling Needed(System Test):</b> {currentSelect&&(currentSelect?<>Yes</>:<>No</>)} 
                             </div>
                         </div>
@@ -93,7 +93,7 @@ useEffect(()=>{
                         {currentSelect&&currentSelect.mobileNumber?(<div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Mobile Number:</b> {currentSelect&&currentSelect.mobileNumber}
                             </div>
                         </div>
@@ -104,7 +104,7 @@ useEffect(()=>{
                   <div className="card mb-0">
                   <div className="card-header card-header-inner" data-toggle="collapse"
                       data-parent="#accordion" href="#applicant_login">
-                      <div className="linkcorner">
+                      <div className="linkcorner text-left ml-4">
                       <b>{c.statement}</b> <br/>
                       {c.ans}
                       </div>
@@ -139,7 +139,7 @@ useEffect(()=>{
                    <div className="card mb-0" key={index}>
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                                <Link onClick={()=>setCurrentSelect(c)}>
                                <b>Type:</b>{c.addictionType}   <b>Contact Details:</b> {c.email}
                                 </Link>
@@ -152,7 +152,7 @@ useEffect(()=>{
                       <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             
                             <Pagination activePage={currentPage} 
       itemsCountPerPage={resPerPage}
@@ -178,14 +178,14 @@ useEffect(()=>{
                         
                        <span className="text-white notification cardHeadText">
                 
-                            <i className="fa fa-user"></i>Selected Counselor
+                            <i className="fa fa-user"></i>Selected 
                         </span>
                     </div>  
                    
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Email:</b> {currentSelect&&currentSelect.email}
                             </div>
                         </div>
@@ -193,7 +193,7 @@ useEffect(()=>{
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Addiction Type:</b> {currentSelect&&currentSelect.addictionType}
                             </div>
                         </div>
@@ -201,7 +201,7 @@ useEffect(()=>{
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Counseling Needed(System Test):</b> {currentSelect&&(currentSelect?<>Yes</>:<>No</>)} 
                             </div>
                         </div>
@@ -209,7 +209,7 @@ useEffect(()=>{
                         {currentSelect&&currentSelect.mobileNumber?(<div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Mobile Number:</b> {currentSelect&&currentSelect.mobileNumber}
                             </div>
                         </div>
@@ -217,7 +217,7 @@ useEffect(()=>{
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <button className="mr-5"onClick={()=>setcurrentPages("1")}>Show Response</button>
                            <button onClick={handleAccept}>Accept</button>
                             </div>

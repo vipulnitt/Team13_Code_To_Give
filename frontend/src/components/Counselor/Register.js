@@ -137,7 +137,17 @@ const Register = () => {
                   checked={formData.expertise.includes('Porn')}
                   onChange={handleCheckboxChange}
                 />
-               <b>Porn</b> 
+                <b>Porn</b>
+                <input
+                  type="checkbox"
+                  name="expertise_Smoking"
+                  value="Smoking"
+                  className="ml-3"
+                  style={{ transform: "scale(1.5)" }}
+                  checked={formData.expertise.includes('Smoking')}
+                  onChange={handleCheckboxChange}
+                />
+               <b>Smoking</b> 
                 <input
                   type="checkbox"
                   name="expertise_Alcohol"

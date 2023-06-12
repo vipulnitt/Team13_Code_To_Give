@@ -28,7 +28,7 @@ export const CounselorProfile = () => {
     <Fragment>
           <div className="container mt-5">
       <div className="card">
-        <div className="card-body">
+        <div className="card-body linkcorner text-left ml-4">
             {counselor?(<> <h2 className="card-title">Counselor Profile</h2>
           <p className="card-text"><b>Name:</b> {counselor.name}</p>
           <p className="card-text"><b>Email: </b>{counselor.email}</p>

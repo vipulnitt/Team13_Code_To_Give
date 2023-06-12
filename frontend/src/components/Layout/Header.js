@@ -148,7 +148,6 @@ const Header = () => {
                             {<Link to='/admin/counselors'>Counselors</Link>}
                             {<Link to='/admin/pendingRequest'>Pending Request</Link>}
                             {<Link to='/admin/response'>Responses</Link>}
-                            {<Link to='/admin/volunteers'>Vounteers</Link>}
                             <Link  onClick={logoutHandler}>
                               Logout
                             </Link>

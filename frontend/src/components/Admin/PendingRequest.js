@@ -82,10 +82,10 @@ const PendingRequest = () => {
                             <i className="fa fa-user"></i>Selected Counselor
                         </span>
                     </div>  
-                    <div className="card mb-0">
+                    <div className="card mb-0 ">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4" >
                             <b>Name:</b> {currentCounselor&&currentCounselor.name}
                             </div>
                         </div>
@@ -93,7 +93,7 @@ const PendingRequest = () => {
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Email:</b> {currentCounselor&&currentCounselor.email}
                             </div>
                         </div>
@@ -101,7 +101,7 @@ const PendingRequest = () => {
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Expertise Domain:</b> {currentCounselor&&currentCounselor.expertise.join(', ')}
                             </div>
                         </div>
@@ -109,7 +109,7 @@ const PendingRequest = () => {
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Experience:</b> {currentCounselor&&currentCounselor.experience} years
                             </div>
                         </div>
@@ -117,7 +117,7 @@ const PendingRequest = () => {
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Mobile Number:</b> {currentCounselor&&currentCounselor.mobileNumber}
                             </div>
                         </div>

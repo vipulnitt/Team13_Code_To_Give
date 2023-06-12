@@ -16,7 +16,7 @@
     {
         "questionId":"BASE2",
         "statement":"What is your type of Addiction?",
-        "options":[{"option":"Drugs","childId":"DRUG0"},{"option":"Mobile","childId":"MOBO1"},{"option":"Smoking","childId":"SMO1"},{"option":"Porn","childId":"PORN1"}],
+        "options":[{"option":"Drugs","childId":"DRUG0"},{"option":"Mobile","childId":"MOBO1"},{"option":"Smoking","childId":"SMO1"},{"option":"Porn","childId":"PORN1"},{"option":"Alcohol","childId":"ALC1"}],
         "parentId":"BASE1"
     },
    {

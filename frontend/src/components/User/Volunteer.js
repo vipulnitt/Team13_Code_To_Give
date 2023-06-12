@@ -81,7 +81,6 @@ const Volunteer = () => {
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
                   />
                 </div>
               </div>
@@ -143,8 +142,7 @@ const Volunteer = () => {
                     className="form-control"
                     placeholder="Enter answer"
                     value={suggestions} 
-                    onChange={(e) => {setSuggestions(e.target.value)}} 
-                    required
+                    onChange={(e) => {setSuggestions(e.target.value)}}
                   />
                 </div>
               </div>

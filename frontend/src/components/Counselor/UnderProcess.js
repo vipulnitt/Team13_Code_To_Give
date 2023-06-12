@@ -52,7 +52,7 @@ const navigate = useNavigate();
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Email:</b> {currentSelect&&currentSelect.email}
                             </div>
                         </div>
@@ -60,7 +60,7 @@ const navigate = useNavigate();
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Addiction Type:</b> {currentSelect&&currentSelect.addictionType}
                             </div>
                         </div>
@@ -68,7 +68,7 @@ const navigate = useNavigate();
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Counseling Needed(System Test):</b> {currentSelect&&(currentSelect?<>Yes</>:<>No</>)} 
                             </div>
                         </div>
@@ -76,7 +76,7 @@ const navigate = useNavigate();
                         {currentSelect&&currentSelect.mobileNumber?(<div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Mobile Number:</b> {currentSelect&&currentSelect.mobileNumber}
                             </div>
                         </div>
@@ -87,7 +87,7 @@ const navigate = useNavigate();
                   <div className="card mb-0">
                   <div className="card-header card-header-inner" data-toggle="collapse"
                       data-parent="#accordion" href="#applicant_login">
-                      <div className="linkcorner">
+                      <div className="linkcorner text-left ml-4">
                       <b>{c.statement}</b> <br/>
                       {c.ans}
                       </div>
@@ -113,7 +113,7 @@ const navigate = useNavigate();
                         
                        <span className="text-white notification cardHeadText">
                 
-                            <i className="fa fa-user"></i>Pending Requests
+                            <i className="fa fa-user"></i>Under Process List
                         </span>
                     </div>
             
@@ -122,7 +122,7 @@ const navigate = useNavigate();
                          <div className="card mb-0" key={index}> 
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                                <Link onClick={()=>setCurrentSelect(c)}>
                                <b>Type:</b>{c.addictionType}   <b>Email:</b> {c.email}
                                 </Link>
@@ -141,14 +141,14 @@ const navigate = useNavigate();
                         
                        <span className="text-white notification cardHeadText">
                 
-                            <i className="fa fa-user"></i>Selected Counselor
+                            <i className="fa fa-user"></i>Selected
                         </span>
                     </div>  
                    
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Email:</b> {currentSelect&&currentSelect.email}
                             </div>
                         </div>
@@ -156,7 +156,7 @@ const navigate = useNavigate();
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Addiction Type:</b> {currentSelect&&currentSelect.addictionType}
                             </div>
                         </div>
@@ -164,7 +164,7 @@ const navigate = useNavigate();
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Counseling Needed(System Test):</b> {currentSelect&&(currentSelect?<>Yes</>:<>No</>)} 
                             </div>
                         </div>
@@ -172,7 +172,7 @@ const navigate = useNavigate();
                         {currentSelect&&currentSelect.mobileNumber?(<div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <b>Mobile Number:</b> {currentSelect&&currentSelect.mobileNumber}
                             </div>
                         </div>
@@ -180,7 +180,7 @@ const navigate = useNavigate();
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             Remark: <input type="text" value={remark} onChange={(e)=>setRemark(e.target.value)}></input>
                             </div>
                         </div>
@@ -188,7 +188,7 @@ const navigate = useNavigate();
                         <div className="card mb-0">
                         <div className="card-header card-header-inner" data-toggle="collapse"
                             data-parent="#accordion" href="#applicant_login">
-                            <div className="linkcorner">
+                            <div className="linkcorner text-left ml-4">
                             <button className="mr-5"onClick={()=>setCurrentPage("1")}>Show Response</button>
                            <button onClick={handleSubmit}>Finished</button>
                             </div>
